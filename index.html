@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+  <title>EvoBlox</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- UI Sus -->
+  <div id="ui">
+    <div id="stage-info">Nivel 1: <span id="level-name">Fly (Muscă)</span></div>
+  </div>
+
+  <!-- Buton Mod PC/Mobil -->
+  <button id="btn-toggle-mode">📱 Mod: PC</button>
+
+  <!-- Harta Mare (Apare doar când apeși M) -->
+  <div id="big-map-modal">
+    <div class="map-box">
+      <h2>HARTA EVOWORLD</h2>
+      <canvas id="bigMapCanvas"></canvas>
+      <p>Apasă din nou pe <b>M</b> sau dă click pentru a închide</p>
+    </div>
+  </div>
+
+  <!-- Canvas Principal -->
+  <canvas id="gameCanvas"></canvas>
+
+  <!-- Controale Mobil -->
+  <div id="mobile-controls">
+    <div class="touch-btn" id="btn-left">◄</div>
+    <div class="touch-btn" id="btn-right">►</div>
+    <div class="touch-btn" id="btn-up">▲</div>
+  </div>
+
+  <script src="game.js"></script>
+</body>
+</html>
