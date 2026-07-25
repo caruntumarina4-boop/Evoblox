@@ -13,14 +13,15 @@
       <div class="topbar-left">
         <div class="account-panel">
           <div class="account-buttons">
-            <button class="secondary-button">Login</button>
-            <button class="secondary-button">Register</button>
+            <button id="btn-login" class="secondary-button" data-i18n="login">Логин</button>
+            <button id="btn-register" class="secondary-button" data-i18n="register">Регистрация</button>
           </div>
+          <div id="account-status" class="account-status"></div>
         </div>
       </div>
       <div class="topbar-right">
         <div class="server-selector">
-          <label for="server-select">Server:</label>
+          <label for="server-select" id="label-server" data-i18n="server">Сервер:</label>
           <select id="server-select">
             <option>North-East Europe</option>
             <option>Europe</option>
@@ -29,93 +30,122 @@
             <option>Asia</option>
           </select>
         </div>
-        <button id="btn-settings" class="icon-button small">Setări</button>
+        <button id="btn-settings" class="icon-button small" data-i18n="settings">Настройки</button>
       </div>
     </header>
 
     <main class="layout">
-      <aside class="sidebar left">
-        <div class="sidebar-card">
-          <h3>Server activ</h3>
-          <p>North-East Europe</p>
-          <p>Ping: 72ms</p>
-        </div>
-        <div class="sidebar-card">
-          <h3>Jucători online</h3>
-          <p>120 / 300</p>
-        </div>
-        <div class="sidebar-card">
-          <h3>Prietenii tăi</h3>
-          <p>Niciun prieten online</p>
-        </div>
-        <div class="sidebar-actions">
-          <button class="secondary-button">Setări</button>
-          <button class="secondary-button">Magazin</button>
-        </div>
-      </aside>
-
       <section class="center-panel">
         <div class="menu-panel">
           <div class="menu-title site-title">
             <img class="site-icon" src="icon.png" alt="EvoBlox" />
             <div>
               <h1>EvoBlox</h1>
-              <p>Intră acum într-o sesiune multiplayer rapidă. Alege serverul, introdu nickname-ul și apasă Play.</p>
+              <p>Войти в быструю мультиплеерную сессию. Выберите сервер, введите никнейм и нажмите Play.</p>
             </div>
           </div>
           <div class="form-row">
-            <label for="nickname">Nickname</label>
-            <input id="nickname" type="text" placeholder="Alege un nume..." />
+            <label for="nickname" id="label-nickname" data-i18n="nickname">Никнейм</label>
+            <input id="nickname" type="text" placeholder="Введите имя..." data-i18n-placeholder="nicknamePlaceholder" />
           </div>
           <div class="form-row buttons-row">
-            <button id="start-button" class="primary-button">Play / Start</button>
+            <button id="start-button" class="primary-button" data-i18n="playStart">Играть / Старт</button>
           </div>
         </div>
+
+        <div class="game-status">
+          <span id="match-status">Готов к старту</span>
+          <p id="game-message">Используйте никнейм и кнопку Start, чтобы начать.</p>
+        </div>
+        <div class="game-window" id="game-area"></div>
 
         <div class="info-row">
           <div class="info-card">
-            <h3>Magazin & Pets</h3>
-            <p>Skinuri, cadre vizuale și animale de companie.</p>
-            <button class="link-button">Deschide magazin</button>
+            <h3 data-i18n="leaders">Лидеры</h3>
+            <p data-i18n="leaderDescription">Рейтинг лучших игроков.</p>
+            <button id="refresh-leaders" class="link-button" data-i18n="refreshLeaders">Обновить</button>
+            <ul id="leader-list" class="leader-list"></ul>
           </div>
           <div class="info-card">
-            <h3>Leaderboard</h3>
-            <p>Clasamentul celor mai buni jucători.</p>
-            <button class="link-button">Vezi top</button>
-          </div>
-          <div class="info-card">
-            <h3>Coduri Bonus</h3>
-            <p>Introdu codul promoțional pentru recompense.</p>
-            <input id="bonus-code" type="text" placeholder="Cod bonus..." />
-            <button id="apply-code" class="secondary-button">Aplică cod</button>
+            <h3 data-i18n="friends">Друзья</h3>
+            <p id="friends-description" data-i18n="friendsDescription">Здесь будут отображаться ваши друзья.</p>
+            <input id="friend-invite" type="text" placeholder="Введите ник или ID..." data-i18n-placeholder="invitePlaceholder" />
+            <button id="send-invite" class="link-button" data-i18n="sendInvite">Отправить приглашение</button>
+            <ul id="friend-list" class="friend-list"></ul>
+            <h4 data-i18n="pendingInvites">Входящие приглашения</h4>
+            <ul id="pending-invites" class="friend-list"></ul>
           </div>
         </div>
 
-        <div class="social-links">
-          <a href="#">Discord</a>
-          <a href="#">Wiki</a>
-          <a href="#">Facebook</a>
-          <a href="#">Twitter</a>
+        <div class="wiki-card" id="wiki-card">
+          <button id="toggle-wiki" class="link-button">Открыть Wiki</button>
+          <div class="wiki-content" style="display:none;">
+            <h2>Страница Wiki: Evoblox</h2>
+            <p><strong>Evoblox</strong> — это многопользовательская игра на выживание и эволюцию в экосистеме, вдохновленная популярными механками из <strong>EvoWorld.io (FlyOrDie)</strong>, но адаптированная в кубическом стиле (в духе Roblox и Minecraft).</p>
+            <h3>📋 Содержание</h3>
+            <ol class="wiki-list">
+              <li>Общий обзор</li>
+              <li>Система эволюции</li>
+              <li>Игровые механики</li>
+              <li>Окружение и элементы карты</li>
+            </ol>
+            <h3>🟢 Общий обзор</h3>
+            <p>В <strong>Evoblox</strong> путешествие каждого игрока начинается с самого слабого существа в пищевой цепочке. Главная цель — зарабатывать очки опыта (XP) с помощью еды и выживания, чтобы переходить на следующие этапы эволюции и одновременно избегать хищников.</p>
+            <h3>📈 Система эволюции</h3>
+            <p>В игре используется линейная система прогресса. Каждый этап эволюции открывает нового кубического персонажа, уникальные способности и особую диету:</p>
+            <ul>
+              <li><strong>Главное правило:</strong> Вы можете есть только тех игроков или объекты, которые отмечены <strong>зеленой рамкой</strong>, в то время как существа с <strong>красной рамкой</strong> — ваши враги, которых нужно избегать любой ценой.</li>
+              <li><strong>Последовательные этапы:</strong> От крошечных кубических насекомых (наземных или летающих) до грозных монстров, доминирующих в небе или на земле.</li>
+            </ul>
+            <h3>⚙️ Игровые механики</h3>
+            <ul>
+              <li><strong>Шкала жажды:</strong> Помимо голода, игрокам нужно следить за уровнем воды, регулярно посещая водоемы, чтобы не терять энергию или здоровье.</li>
+              <li><strong>Укрытия:</strong> На карте есть специальные элементы окружения (например, кубические облака или кусты), где игроки могут спрятаться от хищников.</li>
+              <li><strong>Активные способности:</strong> Уникальные для каждого класса эволюции (например, ускорение, атаки по площади или временный камуфляж).</li>
+            </ul>
+            <h3>🗺️ Окружение и элементы карты</h3>
+            <ul>
+              <li><strong>Стартовая зона (Кубические равнины):</strong> Безопасная зона для начальных этапов эволюции.</li>
+              <li><strong>Воздушная зона / Облака:</strong> Предназначена для летающих существ, где подстерегают птицы и воздушные хищники.</li>
+              <li><strong>Водная среда:</strong> Озера и реки, необходимые для утоления жажды и эволюции водных форм жизни.</li>
+            </ul>
+          </div>
         </div>
       </section>
 
-      <aside class="sidebar right">
-        <div class="sidebar-card">
-          <h3>Skins & Pets</h3>
-          <p>Alege un aspect nou pentru avatarul tău.</p>
-          <button class="link-button">Accesează</button>
-        </div>
-        <div class="sidebar-card">
-          <h3>Bonusuri</h3>
-          <p>Coduri, oferte și pachete premium.</p>
-          <button class="link-button">Vezi oferte</button>
-        </div>
-        <div class="footer-links">
-          <button class="link-button">Suport</button>
-          <button class="link-button">Donații</button>
-        </div>
-      </aside>
     </main>
+  </div>
+
+  <div class="modal-overlay" id="modal-overlay"></div>
+  <div class="modal auth-modal" id="auth-modal">
+    <button class="modal-close" id="close-auth">×</button>
+    <h2 id="auth-heading" data-i18n="authTitle">Авторизация</h2>
+    <p id="auth-message" data-i18n="authMessage">Войдите с локальным аккаунтом.</p>
+    <div class="form-row">
+      <label for="auth-username" data-i18n="authUsername">Никнейм аккаунта</label>
+      <input id="auth-username" type="text" placeholder="" data-i18n-placeholder="authUsernamePlaceholder" />
+    </div>
+    <div class="form-row">
+      <label for="auth-password" data-i18n="authPassword">Пароль</label>
+      <input id="auth-password" type="password" placeholder="" data-i18n-placeholder="authPasswordPlaceholder" />
+    </div>
+    <div class="form-row buttons-row">
+      <button id="auth-submit" class="primary-button" data-i18n="authSubmitLogin">Войти</button>
+      <button id="auth-toggle-mode" class="link-button" data-i18n="authTogglePromptRegister">Нет аккаунта? Зарегистрируйтесь</button>
+    </div>
+    <p class="auth-note" data-i18n="guestNote">Если у вас нет аккаунта, используйте гостевой режим.</p>
+    <button id="guest-login-button" class="secondary-button" data-i18n="continueGuest">Играть как Guest</button>
+  </div>
+  <div class="modal settings-modal" id="settings-modal">
+    <button class="modal-close" id="close-settings">×</button>
+    <h2 data-i18n="settings">Настройки</h2>
+    <label for="lang-select" data-i18n="chooseLanguage">Выберите язык:</label>
+    <select id="lang-select">
+      <option value="ru">Русский</option>
+      <option value="ro">Română</option>
+      <option value="en">English</option>
+    </select>
+    <p data-i18n="multiplayerNote">Мультиплеер работает локально; для реального онлайн потребуется плагин.</p>
   </div>
 
   <script src="game.js"></script>
