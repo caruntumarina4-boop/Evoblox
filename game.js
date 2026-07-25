@@ -33,9 +33,21 @@ const toggleWikiButton = document.getElementById("toggle-wiki");
 const wikiContent = document.querySelector(".wiki-content");
 
 const players = {
-  player1: { x: 60, y: 240, color: "player-1", label: "1", keys: { left: false, right: false, up: false, down: false }, sprite: null },
-  player2: { x: 180, y: 240, color: "player-2", label: "2", keys: { left: false, right: false, up: false, down: false }, sprite: null, active: true }
+  player1: { x: 60, y: 240, color: "player-1", label: "1", keys: { left: false, right: false, up: false, down: false }, sprite: null, stageIndex: 0, score: 0, displayName: 'Player 1' },
+  player2: { x: 180, y: 240, color: "player-2", label: "2", keys: { left: false, right: false, up: false, down: false }, sprite: null, stageIndex: 0, score: 0, displayName: 'Player 2', active: true }
 };
+
+const evolutionStages = [
+  'Hatchling', 'Pebble', 'Sprout', 'Cub', 'Glimmer', 'Scale', 'Sparrow', 'Brute', 'Scout', 'Drifter',
+  'Raptor', 'Stoneclaw', 'Windling', 'Frostling', 'Ember', 'Tideborn', 'Thunder', 'Shade', 'Ironjaw', 'Vortex',
+  'Skyborne', 'Bouldertide', 'Crystal', 'Nightwing', 'Solaris', 'Stormborne', 'Warden', 'Specter', 'Titan', 'Aurora',
+  'Phantom', 'Magma', 'Zephyr', 'Obsidian', 'Nova', 'Rift', 'Chrono', 'Aether', 'Celestial', 'Eclipse',
+  'Legend', 'Mythic', 'Ascendant', 'Elder', 'Supreme'
+];
+
+let gameStarted = false;
+let pickups = [];
+let gameTick = 0;
 
 const translations = {
   ru: {
@@ -58,8 +70,17 @@ const translations = {
     authTitle: 'Авторизация',
     authMessage: 'Войдите с локальным аккаунтом.',
     continueGuest: 'Играть как Guest',
-    enterEmailPassword: 'Введите никнейм и пароль.',
-    enterEmailPasswordNickname: 'Введите никнейм и пароль.',
+    authSubmitLogin: 'Войти',
+    authSubmitRegister: 'Регистрация',
+    authTogglePromptRegister: 'Нет аккаунта? Зарегистрируйтесь',
+    authTogglePromptLogin: 'Уже есть аккаунт? Войти',
+    authUsername: 'Никнейм аккаунта',
+    authUsernamePlaceholder: 'Введите свой никнейм',
+    authPassword: 'Пароль',
+    authPasswordPlaceholder: 'Введите пароль',
+    enterAccountCredentials: 'Введите никнейм и пароль.',
+    usernameTaken: 'Имя пользователя уже занято.',
+    declineInvite: 'Отклонить',
     emailExists: 'Имя пользователя уже занято.',
     invalidCredentials: 'Неверное имя или пароль.',
     waitingLogin: 'Вход в процессе...',
@@ -87,10 +108,18 @@ const translations = {
     authTitle: 'Autentificare',
     authMessage: 'Autentifică-te cu cont local.',
     continueGuest: 'Joacă ca Guest',
-    enterEmailPassword: 'Introdu nick și parolă.',
-    enterEmailPasswordNickname: 'Introdu nick și parolă.',
-    emailExists: 'Numele de utilizator este deja folosit.',
-    invalidCredentials: 'Nume sau parolă incorectă.',
+    authSubmitLogin: 'Autentificare',
+    authSubmitRegister: 'Înregistrare',
+    authTogglePromptRegister: 'Nu ai cont? Înregistrează-te',
+    authTogglePromptLogin: 'Ai deja cont? Autentifică-te',
+    authUsername: 'Nickname cont',
+    authUsernamePlaceholder: 'Introdu nickname',
+    authPassword: 'Parolă',
+    authPasswordPlaceholder: 'Introdu parolă',
+    enterAccountCredentials: 'Introduceți nickname și parolă.',
+    usernameTaken: 'Nickname-ul este deja folosit.',
+    emailExists: 'Nickname-ul este deja folosit.',
+    invalidCredentials: 'Nickname sau parolă incorecte.',
     waitingLogin: 'Se realizează autentificarea...',
     waitingRegister: 'Se realizează înscrierea...',
     guestNicknamePlaceholder: 'Guest nu poate schimba nickname.',
@@ -117,8 +146,16 @@ const translations = {
     authTitle: 'Authentication',
     authMessage: 'Sign in with a local account.',
     continueGuest: 'Play as Guest',
-    enterEmailPassword: 'Enter username and password.',
-    enterEmailPasswordNickname: 'Enter username and password.',
+    authSubmitLogin: 'Login',
+    authSubmitRegister: 'Register',
+    authTogglePromptRegister: 'No account? Register',
+    authTogglePromptLogin: 'Already have an account? Login',
+    authUsername: 'Account username',
+    authUsernamePlaceholder: 'Enter username',
+    authPassword: 'Password',
+    authPasswordPlaceholder: 'Enter password',
+    enterAccountCredentials: 'Enter username and password.',
+    usernameTaken: 'Username is already taken.',
     emailExists: 'Username is already taken.',
     invalidCredentials: 'Invalid username or password.',
     waitingLogin: 'Signing in...',
@@ -132,7 +169,7 @@ const translations = {
 let gameStarted = false;
 let userAccount = {
   isLoggedIn: false,
-  id: null,
+  username: null,
   name: 'Guest',
   friends: [],
   invites: []
@@ -317,7 +354,7 @@ function updateFriendUI() {
     friendList.innerHTML = userAccount.friends.map(f => `<li>${f}</li>`).join('') || `<li>${t('friendsDescription')}</li>`;
   }
   if (pendingInvites) {
-    pendingInvites.innerHTML = userAccount.invites.map(inv => `<li>${inv} <button class="link-button" data-accept="${inv}">${t('acceptInvite')}</button></li>`).join('');
+    pendingInvites.innerHTML = userAccount.invites.map(inv => `<li>${inv} <button class="link-button" data-accept="${inv}">${t('acceptInvite')}</button> <button class="link-button" data-decline="${inv}">${t('declineInvite')}</button></li>`).join('');
   }
 }
 
@@ -346,8 +383,116 @@ function setNicknameFieldState() {
   }
 }
 
+function setStatus(text) {
+  if (statusText) statusText.textContent = text;
+}
+
+function setMessage(text) {
+  if (messageText) messageText.textContent = text;
+}
+
+function createPlayerSprite(player) {
+  const sprite = document.createElement('div');
+  sprite.className = `player-sprite ${player.color}`;
+  const label = document.createElement('div');
+  label.className = 'player-label';
+  label.textContent = player.displayName;
+  sprite.appendChild(label);
+  gameArea.appendChild(sprite);
+  player.sprite = sprite;
+  updatePlayerSprite(player);
+}
+
+function updatePlayerSprite(player) {
+  if (!player.sprite) return;
+  const size = 40 + Math.min(player.stageIndex, 12);
+  player.sprite.style.width = `${size}px`;
+  player.sprite.style.height = `${size}px`;
+  player.sprite.style.left = `${player.x}px`;
+  player.sprite.style.top = `${player.y}px`;
+  const label = player.sprite.querySelector('.player-label');
+  if (label) label.textContent = player.displayName;
+}
+
+function movePlayer(player) {
+  const speed = 2 + player.stageIndex * 0.05;
+  const maxX = Math.max(0, gameArea.clientWidth - 40);
+  const maxY = Math.max(0, gameArea.clientHeight - 40);
+  if (player.keys.left) player.x = Math.max(0, player.x - speed);
+  if (player.keys.right) player.x = Math.min(maxX, player.x + speed);
+  if (player.keys.up) player.y = Math.max(0, player.y - speed);
+  if (player.keys.down) player.y = Math.min(maxY, player.y + speed);
+}
+
+function clearPickups() {
+  pickups.forEach(p => {
+    if (p.element && p.element.parentNode) {
+      p.element.parentNode.removeChild(p.element);
+    }
+  });
+  pickups = [];
+}
+
+function spawnPickups() {
+  clearPickups();
+  const total = 10;
+  for (let i = 0; i < total; i++) {
+    const x = Math.random() * Math.max(0, gameArea.clientWidth - 30);
+    const y = Math.random() * Math.max(0, gameArea.clientHeight - 30);
+    const pickup = { x, y, element: null };
+    const el = document.createElement('div');
+    el.className = 'pickup';
+    el.style.left = `${x}px`;
+    el.style.top = `${y}px`;
+    el.textContent = evolutionStages[i % evolutionStages.length];
+    gameArea.appendChild(el);
+    pickup.element = el;
+    pickups.push(pickup);
+  }
+}
+
+function checkPickupCollision(player, pickup) {
+  return player.x + 40 > pickup.x && player.x < pickup.x + 30 && player.y + 40 > pickup.y && player.y < pickup.y + 30;
+}
+
+function advanceEvolution(player) {
+  if (player.stageIndex < evolutionStages.length - 1) {
+    player.stageIndex += 1;
+    player.score += 100;
+    player.displayName = `${evolutionStages[player.stageIndex]} ${player.label}`;
+    updatePlayerSprite(player);
+    setMessage(`${player.displayName} evoluează la nivelul ${player.stageIndex + 1}`);
+  }
+}
+
+function updateGame() {
+  if (gameStarted) {
+    movePlayer(players.player1);
+    movePlayer(players.player2);
+    updatePlayerSprite(players.player1);
+    updatePlayerSprite(players.player2);
+    pickups.forEach((pickup, index) => {
+      [players.player1, players.player2].forEach((player) => {
+        if (pickup.element && checkPickupCollision(player, pickup)) {
+          if (pickup.element.parentNode) pickup.element.parentNode.removeChild(pickup.element);
+          pickups.splice(index, 1);
+          advanceEvolution(player);
+        }
+      });
+    });
+    if (pickups.length === 0) {
+      spawnPickups();
+    }
+    if (gameTick % 180 === 0) {
+      setStatus(`Mapă evoluție: ${evolutionStages[players.player1.stageIndex]} vs ${evolutionStages[players.player2.stageIndex]}`);
+    }
+    gameTick += 1;
+  }
+  window.requestAnimationFrame(updateGame);
+}
+
 function loginGuest() {
-  userAccount = { isLoggedIn: false, email: null, name: guestId, friends: [], invites: [] };
+  userAccount = { isLoggedIn: false, username: null, name: guestId, friends: [], invites: [] };
   localStorage.removeItem('evobloxCurrent');
   updateAccountStatus();
   translatePage();
@@ -402,9 +547,26 @@ function acceptInvite(sender) {
 
 function handlePendingClick(event) {
   const accept = event.target.dataset.accept;
+  const decline = event.target.dataset.decline;
   if (accept) {
     acceptInvite(accept);
   }
+  if (decline) {
+    declineInvite(decline);
+  }
+}
+
+function declineInvite(sender) {
+  if (!userAccount.isLoggedIn) return;
+  userAccount.invites = userAccount.invites.filter(inv => inv !== sender);
+  const userData = accountDatabase[userAccount.username];
+  if (userData) {
+    userData.invites = userAccount.invites;
+    accountDatabase[userAccount.username] = userData;
+  }
+  saveAccounts();
+  saveCurrentUser();
+  updateFriendUI();
 }
 
 function startGame() {
@@ -413,9 +575,21 @@ function startGame() {
     setMessage('Введите никнейм, чтобы начать игру.');
     return;
   }
+  players.player1.displayName = userAccount.isLoggedIn ? userAccount.name : 'Player 1';
+  players.player2.displayName = 'Player 2';
+  players.player1.stageIndex = 0;
+  players.player2.stageIndex = 0;
+  players.player1.x = 60;
+  players.player1.y = 240;
+  players.player2.x = 180;
+  players.player2.y = 240;
+  spawnPickups();
   gameStarted = true;
+  gameTick = 0;
   setMessage(`Joc pornit cu ${nickname} pe ${serverSelect ? serverSelect.value : 'server'}`);
   setStatus('Joc multiplayer local activ');
+  updatePlayerSprite(players.player1);
+  updatePlayerSprite(players.player2);
 }
 
 function applyBonusCode() {
