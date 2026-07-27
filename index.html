@@ -1,153 +1,206 @@
 ﻿<!DOCTYPE html>
 <html lang="ro">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>EvoBlox</title>
-  <link rel="icon" type="image/png" href="icon.png" />
-  <link rel="stylesheet" href="style.css" />
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EvoBlox.io</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <div class="app">
-    <header class="topbar">
-      <div class="topbar-left">
-        <div class="account-panel">
-          <div class="account-buttons">
-            <button id="btn-login" class="secondary-button" data-i18n="login">Логин</button>
-            <button id="btn-register" class="secondary-button" data-i18n="register">Регистрация</button>
-          </div>
-          <div id="account-status" class="account-status"></div>
-        </div>
-      </div>
-      <div class="topbar-right">
-        <div class="server-selector">
-          <label for="server-select" id="label-server" data-i18n="server">Сервер:</label>
-          <select id="server-select">
-            <option>North-East Europe</option>
-            <option>Europe</option>
-            <option>USA West</option>
-            <option>USA East</option>
-            <option>Asia</option>
-          </select>
-        </div>
-        <button id="btn-settings" class="icon-button small" data-i18n="settings">Настройки</button>
-      </div>
-    </header>
+    <canvas id="gameCanvas"></canvas>
 
-    <main class="layout">
-      <section class="center-panel">
-        <div class="menu-panel">
-          <div class="menu-title site-title">
-            <img class="site-icon" src="icon.png" alt="EvoBlox" />
-            <div>
-              <h1>EvoBlox</h1>
-              <p>Войти в быструю мультиплеерную сессию. Выберите сервер, введите никнейм и нажмите Play.</p>
+    <!-- MENIUL PRINCIPAL (UI LAYER) -->
+    <div id="ui-layer">
+        
+        <!-- PROFIL JUCĂTOR -->
+        <div class="top-left-profile">
+            <div class="avatar" id="displayAvatar">🐦</div>
+            <div class="info">
+                <div class="name" id="displayUsername">Guest <span class="tag" id="displayTag"></span> <span class="copy-btn-hud" id="copyHudIdBtn" title="Copiază ID" style="display:none;">[📋]</span></div>
+                <div class="xp-bar-container" id="xpContainer">
+                    <div class="xp-bar"></div>
+                    <span class="xp-text" id="displayXp">0/409011000</span>
+                </div>
+                <div class="profile-bottom-row">
+                    <div class="level" id="displayLevel">Guest mode</div>
+                    <button class="logout-btn" id="logoutBtn">Log In</button>
+                </div>
             </div>
-          </div>
-          <div class="form-row">
-            <label for="nickname" id="label-nickname" data-i18n="nickname">Никнейм</label>
-            <input id="nickname" type="text" placeholder="Введите имя..." data-i18n-placeholder="nicknamePlaceholder" />
-          </div>
-          <div class="form-row buttons-row">
-            <button id="start-button" class="primary-button" data-i18n="playStart">Играть / Старт</button>
-          </div>
         </div>
 
-        <div class="game-status">
-          <span id="match-status">Готов к старту</span>
-          <p id="game-message">Используйте никнейм и кнопку Start, чтобы начать.</p>
-        </div>
-        <div class="game-window" id="game-area"></div>
-
-        <div class="info-row">
-          <div class="info-card">
-            <h3 data-i18n="leaders">Лидеры</h3>
-            <p data-i18n="leaderDescription">Рейтинг лучших игроков.</p>
-            <button id="refresh-leaders" class="link-button" data-i18n="refreshLeaders">Обновить</button>
-            <ul id="leader-list" class="leader-list"></ul>
-          </div>
-          <div class="info-card">
-            <h3 data-i18n="friends">Друзья</h3>
-            <p id="friends-description" data-i18n="friendsDescription">Здесь будут отображаться ваши друзья.</p>
-            <input id="friend-invite" type="text" placeholder="Введите ник или ID..." data-i18n-placeholder="invitePlaceholder" />
-            <button id="send-invite" class="link-button" data-i18n="sendInvite">Отправить приглашение</button>
-            <ul id="friend-list" class="friend-list"></ul>
-            <h4 data-i18n="pendingInvites">Входящие приглашения</h4>
-            <ul id="pending-invites" class="friend-list"></ul>
-          </div>
+        <!-- PANELE LATERALE STÂNGA -->
+        <div class="left-panels">
+            <div class="panel">
+                <div class="panel-title">New task in</div>
+                <div class="panel-content timer">00:25:19</div>
+            </div>
+            <div class="panel">
+                <div class="panel-title">Reward received</div>
+                <div class="panel-content small-text">You will get a new task in 20 hours</div>
+            </div>
         </div>
 
-        <div class="wiki-card" id="wiki-card">
-          <button id="toggle-wiki" class="link-button">Открыть Wiki</button>
-          <div class="wiki-content" style="display:none;">
-            <h2>Страница Wiki: Evoblox</h2>
-            <p><strong>Evoblox</strong> — это многопользовательская игра на выживание и эволюцию в экосистеме, вдохновленная популярными механками из <strong>EvoWorld.io (FlyOrDie)</strong>, но адаптированная в кубическом стиле (в духе Roblox и Minecraft).</p>
-            <h3>📋 Содержание</h3>
-            <ol class="wiki-list">
-              <li>Общий обзор</li>
-              <li>Система эволюции</li>
-              <li>Игровые механики</li>
-              <li>Окружение и элементы карты</li>
-            </ol>
-            <h3>🟢 Общий обзор</h3>
-            <p>В <strong>Evoblox</strong> путешествие каждого игрока начинается с самого слабого существа в пищевой цепочке. Главная цель — зарабатывать очки опыта (XP) с помощью еды и выживания, чтобы переходить на следующие этапы эволюции и одновременно избегать хищников.</p>
-            <h3>📈 Система эволюции</h3>
-            <p>В игре используется линейная система прогресса. Каждый этап эволюции открывает нового кубического персонажа, уникальные способности и особую диету:</p>
-            <ul>
-              <li><strong>Главное правило:</strong> Вы можете есть только тех игроков или объекты, которые отмечены <strong>зеленой рамкой</strong>, в то время как существа с <strong>красной рамкой</strong> — ваши враги, которых нужно избегать любой ценой.</li>
-              <li><strong>Последовательные этапы:</strong> От крошечных кубических насекомых (наземных или летающих) до грозных монстров, доминирующих в небе или на земле.</li>
-            </ul>
-            <h3>⚙️ Игровые механики</h3>
-            <ul>
-              <li><strong>Шкала жажды:</strong> Помимо голода, игрокам нужно следить за уровнем воды, регулярно посещая водоемы, чтобы не терять энергию или здоровье.</li>
-              <li><strong>Укрытия:</strong> На карте есть специальные элементы окружения (например, кубические облака или кусты), где игроки могут спрятаться от хищников.</li>
-              <li><strong>Активные способности:</strong> Уникальные для каждого класса эволюции (например, ускорение, атаки по площади или временный камуфляж).</li>
-            </ul>
-            <h3>🗺️ Окружение и элементы карты</h3>
-            <ul>
-              <li><strong>Стартовая зона (Кубические равнины):</strong> Безопасная зона для начальных этапов эволюции.</li>
-              <li><strong>Воздушная зона / Облака:</strong> Предназначена для летающих существ, где подстерегают птицы и воздушные хищники.</li>
-              <li><strong>Водная среда:</strong> Озера и реки, необходимые для утоления жажды и эволюции водных форм жизни.</li>
-            </ul>
-          </div>
+        <div class="top-center-logo">
+            <h1>EvoBlox.io</h1>
         </div>
-      </section>
 
-    </main>
-  </div>
+        <!-- MENIUL CENTRAL DE PLAY -->
+        <div class="center-play-menu" id="playMenu">
+            <div class="play-controls">
+                <input type="text" id="playerNameInput" value="Player" class="name-input" placeholder="Player Name">
+                <select class="server-select">
+                    <option>🇲🇩 Moldova (142/300)</option>
+                    <option>🇷🇴 Romania (210/300)</option>
+                    <option>🇬🇧 Europe West - EN (280/300)</option>
+                    <option>🇷🇺 Russia Central - RU (195/300)</option>
+                    <option>🇺🇸 US East (88/300)</option>
+                    <option>🌏 Asia South (120/300)</option>
+                </select>
+                <button class="play-btn" id="playBtn">PLAY</button>
+            </div>
+            <div class="play-info">
+                <div class="how-to-play">
+                    <h2>HOW TO PLAY?</h2>
+                    <p>Fly and eat or be eaten. Survive, evolve, and grow stronger. Eat creatures with a green border and avoid red ones.</p>
+                    <p><strong>Controls:</strong> arrows or mouse<br><strong>Skill:</strong> right click or space</p>
+                </div>
+                <div class="ad-banner">
+                    [Ad Placeholder: War Thunder]
+                </div>
+            </div>
+        </div>
 
-  <div class="modal-overlay" id="modal-overlay"></div>
-  <div class="modal auth-modal" id="auth-modal">
-    <button class="modal-close" id="close-auth">×</button>
-    <h2 id="auth-heading" data-i18n="authTitle">Авторизация</h2>
-    <p id="auth-message" data-i18n="authMessage">Войдите с локальным аккаунтом.</p>
-    <div class="form-row">
-      <label for="auth-username" data-i18n="authUsername">Никнейм аккаунта</label>
-      <input id="auth-username" type="text" placeholder="" data-i18n-placeholder="authUsernamePlaceholder" />
+        <!-- MONEDE / GEMS -->
+        <div class="top-right-gems">
+            <span class="gem-count" id="displayCoins">2500</span> 🪙
+        </div>
+
+        <!-- PANELE LATERALE DREAPTA -->
+        <div class="right-panels" id="rightMenu">
+            <button class="big-btn shop">👑 SHOP</button>
+            <button class="big-btn friends-menu-btn" id="openFriendsBtn">👥 FRIENDS</button>
+            <button class="big-btn profile-menu-btn" id="openProfileBtn" style="display: none;">🛡️ PROFILE</button>
+        </div>
+
+        <!-- FOOTER -->
+        <div class="footer">
+            <div class="socials">
+                <button>Discord</button> <button>YT</button> <button>X</button>
+            </div>
+            <div class="links">
+                wikia | contact | privacy
+            </div>
+        </div>
     </div>
-    <div class="form-row">
-      <label for="auth-password" data-i18n="authPassword">Пароль</label>
-      <input id="auth-password" type="password" placeholder="" data-i18n-placeholder="authPasswordPlaceholder" />
-    </div>
-    <div class="form-row buttons-row">
-      <button id="auth-submit" class="primary-button" data-i18n="authSubmitLogin">Войти</button>
-      <button id="auth-toggle-mode" class="link-button" data-i18n="authTogglePromptRegister">Нет аккаунта? Зарегистрируйтесь</button>
-    </div>
-    <p class="auth-note" data-i18n="guestNote">Если у вас нет аккаунта, используйте гостевой режим.</p>
-    <button id="guest-login-button" class="secondary-button" data-i18n="continueGuest">Играть как Guest</button>
-  </div>
-  <div class="modal settings-modal" id="settings-modal">
-    <button class="modal-close" id="close-settings">×</button>
-    <h2 data-i18n="settings">Настройки</h2>
-    <label for="lang-select" data-i18n="chooseLanguage">Выберите язык:</label>
-    <select id="lang-select">
-      <option value="ru">Русский</option>
-      <option value="ro">Română</option>
-      <option value="en">English</option>
-    </select>
-    <p data-i18n="multiplayerNote">Мультиплеер работает локально; для реального онлайн потребуется плагин.</p>
-  </div>
 
-  <script src="game.js"></script>
+    <!-- MODAL: AUTENTIFICARE (LOGIN / SIGN UP) -->
+    <div id="authModal" class="modal" style="display: none;">
+        <div class="modal-content">
+            <div class="auth-tabs">
+                <button id="tabLoginBtn" class="tab-btn active">Login</button>
+                <button id="tabSignupBtn" class="tab-btn">Sign Up</button>
+            </div>
+
+            <!-- FORMULAR LOGIN -->
+            <div id="loginFormSection" class="auth-form-section">
+                <h2>Log In</h2>
+                <input type="text" id="loginUsernameInput" placeholder="Nickname" class="login-input full-width">
+                <input type="password" id="loginPasswordInput" placeholder="Parolă" class="login-input full-width">
+                <div id="loginErrorMsg" class="login-error"></div>
+                <button id="submitLoginBtn" class="big-btn auth-action-btn">Log In</button>
+            </div>
+
+            <!-- FORMULAR SIGN UP -->
+            <div id="signupFormSection" class="auth-form-section" style="display: none;">
+                <h2>Sign Up</h2>
+                <input type="text" id="signupUsernameInput" placeholder="Nickname" class="login-input full-width">
+                <input type="password" id="signupPasswordInput" placeholder="Parolă" class="login-input full-width">
+                <input type="password" id="signupConfirmInput" placeholder="Confirmă Parola" class="login-input full-width">
+                <div id="signupErrorMsg" class="login-error"></div>
+                <button id="submitSignupBtn" class="big-btn auth-action-btn">Create Account</button>
+            </div>
+
+            <button class="close-modal-btn" id="closeAuthModalBtn" style="margin-top: 15px; width: 100%;">Continua ca Guest</button>
+        </div>
+    </div>
+
+    <!-- MODAL: PROFIL JUCĂTOR & SETĂRI CONT -->
+    <div id="profileModal" class="modal" style="display: none;">
+        <div class="profile-modal-content">
+            <div class="profile-header">
+                <h2>Player info</h2>
+                <button class="profile-close-x" id="closeProfileBtn">X</button>
+            </div>
+            
+            <div class="profile-avatar-container">
+                <div class="profile-bird-avatar">🐦</div>
+                <div class="profile-avatar-tag" id="profileAvatarTag">[1] [DD] Player</div>
+            </div>
+
+            <div class="profile-stats-list">
+                <div class="stat-row">ID: <span id="profileId">-</span> <span class="copy-btn" id="copyIdBtn">[copy]</span></div>
+                <div class="stat-row">Level: <span id="profileLevel">1</span></div>
+                <div class="profile-xp-container">
+                    <div class="profile-xp-fill" id="profileXpFill"></div>
+                    <span class="profile-xp-text" id="profileXpText">73 723 041 / 88 440 100</span>
+                </div>
+            </div>
+
+            <!-- SECȚIUNE SCHIMBARE NICKNAME -->
+            <div class="change-password-box">
+                <h3>Schimbă Nickname</h3>
+                <input type="text" id="cnNewInput" placeholder="Nickname nou" class="login-input full-width">
+                <input type="password" id="cnPassInput" placeholder="Parola ta actuală" class="login-input full-width">
+                <div id="cnErrorMsg" class="login-error"></div>
+                <button id="submitChangeNickBtn" class="auth-btn local-btn" style="width: 100%; margin-top: 3px;">Actualizează Nickname</button>
+            </div>
+
+            <!-- SECȚIUNE SCHIMBARE PAROLĂ -->
+            <div class="change-password-box" style="margin-top: 8px;">
+                <h3>Schimbă Parola</h3>
+                <input type="text" id="cpUsernameInput" placeholder="Nickname" class="login-input full-width">
+                <input type="password" id="cpOldPasswordInput" placeholder="Parola veche" class="login-input full-width">
+                <input type="password" id="cpNewPasswordInput" placeholder="Parola nouă" class="login-input full-width">
+                <div id="cpErrorMsg" class="login-error"></div>
+                <button id="submitChangePassBtn" class="auth-btn local-btn" style="width: 100%; margin-top: 3px;">Actualizează Parola</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- MODAL: SISTEM DE PRIETENI -->
+    <div id="friendsModal" class="modal" style="display: none;">
+        <div class="modal-content">
+            <h2>Friends System</h2>
+            <div class="friend-add-section">
+                <input type="text" id="friendIdInput" placeholder="Introdu Player ID" class="login-input">
+                <button id="sendFriendReqBtn" class="auth-btn local-btn">Add Friend</button>
+            </div>
+            <div id="friendMsg" class="login-error"></div>
+            <h3>Lista Prieteni</h3>
+            <ul id="friendsList" class="list-container">
+                <span class="empty-text">Niciun prieten adăugat.</span>
+            </ul>
+            <button class="close-modal-btn" id="closeFriendsBtn" style="width: 100%; margin-top: 10px;">Închide</button>
+        </div>
+    </div>
+
+    <!-- ECRAN SPLASH -->
+    <div id="splashScreen">
+        <img src="bloxicon.png" alt="Bloxicon Logo" class="splash-image">
+    </div>
+
+    <!-- ECRAN LOADING -->
+    <div id="loadingScreen" style="display: none;">
+        <div class="loading-content">
+            <h1 class="loading-logo">EvoBlox.io</h1>
+            <div class="loading-bar-container">
+                <div id="loadingFill" class="loading-fill"></div>
+            </div>
+            <div id="loadingPercentage" class="loading-percentage">0%</div>
+            <div id="loadingStatus" class="loading-status">Conectare la server...</div>
+        </div>
+    </div>
+
+    <script src="game.js"></script>
 </body>
 </html>
