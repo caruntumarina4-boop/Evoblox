@@ -1,6 +1,7 @@
 ﻿<!DOCTYPE html>
 <html lang="ro">
 <head>
+    <script src="https://cdn.socket.io/4.7.2/socket.io.min.js"></script>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>EvoBlox.io</title>
@@ -167,12 +168,12 @@
         </div>
     </div>
 
-    <!-- MODAL: SISTEM DE PRIETENI -->
+    <!-- MODAL: SISTEM DE PRIETENI (Adăugat integral) -->
     <div id="friendsModal" class="modal" style="display: none;">
         <div class="modal-content">
             <h2>Friends System</h2>
             <div class="friend-add-section">
-                <input type="text" id="friendIdInput" placeholder="Introdu Player ID" class="login-input">
+                <input type="text" id="friendIdInput" placeholder="Introdu Player ID/Cod" class="login-input">
                 <button id="sendFriendReqBtn" class="auth-btn local-btn">Add Friend</button>
             </div>
             <div id="friendMsg" class="login-error"></div>
@@ -182,6 +183,13 @@
             </ul>
             <button class="close-modal-btn" id="closeFriendsBtn" style="width: 100%; margin-top: 10px;">Închide</button>
         </div>
+    </div>
+
+    <!-- NOTIFICARE CERERE DE PRIETENIE (Butoane Da verde / Nu roșu) -->
+    <div id="friend-popup" style="display: none; position: fixed; top: 50%; left: 50%; transform: translate(-50%, -50%); background: #222; color: white; padding: 20px; border-radius: 10px; border: 2px solid #444; z-index: 1000; text-align: center;">
+        <p id="friend-popup-text">Ai primit o cerere de prietenie!</p>
+        <button id="accept-friend" style="background: #28a745; color: white; padding: 10px 20px; border: none; border-radius: 5px; cursor: pointer; margin-right: 10px; font-weight: bold;">Da</button>
+        <button id="decline-friend" style="background: #dc3545; color: white; padding: 10px 20px; border: none; border-radius: 5px; cursor: pointer; font-weight: bold;">Nu</button>
     </div>
 
     <!-- ECRAN SPLASH -->

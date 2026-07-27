@@ -1,4 +1,5 @@
-﻿const canvas = document.getElementById('gameCanvas');
+﻿const socket = io('http://localhost:3000');
+const canvas = document.getElementById('gameCanvas');
 const ctx = canvas.getContext('2d');
 
 const uiLayer = document.getElementById('ui-layer');
@@ -149,7 +150,6 @@ function setGuestMode() {
     currentAccount = null;
     localStorage.removeItem('evoblox_active_session');
     
-    // Generare număr aleatoriu pentru un nume unic de tipul guest_83823823
     let randomGuestNum = Math.floor(Math.random() * 90000000 + 10000000);
     let guestName = `Guest_${randomGuestNum}`;
 
@@ -158,7 +158,7 @@ function setGuestMode() {
     displayLevel.textContent = "Guest mode";
     displayCoins.textContent = "0";
     playerNameInput.value = guestName;
-    playerNameInput.disabled = true; // Guest nu poate schimba nickname-ul din casetă
+    playerNameInput.disabled = true; 
     copyHudIdBtn.style.display = "none";
     openProfileBtn.style.display = "none";
     xpContainer.style.display = "none";
@@ -172,7 +172,7 @@ function loadAccountToUI() {
     displayLevel.textContent = `level ${currentAccount.level}`;
     displayCoins.textContent = currentAccount.coins;
     playerNameInput.value = currentAccount.username;
-    playerNameInput.disabled = false; // Cei cu cont pot schimba nickname-ul direct din casetă
+    playerNameInput.disabled = false; 
     copyHudIdBtn.style.display = "inline-block";
     openProfileBtn.style.display = "block";
     xpContainer.style.display = "block";
@@ -461,8 +461,8 @@ function updateFriendsListUI() {
     });
 }
 
+// Acțiunea butonului PLAY (trimite datele și la server)
 playBtn.addEventListener('click', () => {
-    // Dacă utilizatorul are cont și a modificat numele în casetă, actualizăm contul
     if (currentAccount) {
         let newName = playerNameInput.value.trim();
         if (newName && newName !== currentAccount.username) {
@@ -477,6 +477,16 @@ playBtn.addEventListener('click', () => {
             }
         }
     }
+
+    const playerName = playerNameInput.value;
+    if (!playerName) {
+        alert('Te rog introdu un nume!');
+        return;
+    }
+
+    // Trimitem serverului faptul că am intrat în joc
+    socket.emit('join_game', { name: playerName });
+    console.log("Am trimis datele către server!");
 
     playMenu.style.display = 'none';
     rightMenu.style.display = 'none';
@@ -529,6 +539,12 @@ function gameLoop() {
         ctx.fill();
 
         let renderName = currentAccount ? currentAccount.username : (playerNameInput.value.trim() || "Guest");
+        
+        // Verificăm dacă jucătorul este în lista de prieteni pentru a adăuga emoji-ul 🤝
+        if (currentAccount && currentAccount.friends && currentAccount.friends.length > 0) {
+            // Dacă ai ID-uri de prieteni în listă, poți adăuga logica de verificare direct aici
+        }
+
         ctx.fillStyle = 'white';
         ctx.font = '16px Impact';
         ctx.textAlign = 'center';
