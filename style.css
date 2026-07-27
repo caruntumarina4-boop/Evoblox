@@ -9,6 +9,8 @@
 body {
     overflow: hidden;
     background-color: #5bb3cc;
+    width: 100vw;
+    height: 100vh;
 }
 
 #gameCanvas {
@@ -36,16 +38,16 @@ body {
     color: white;
 }
 
+/* Profil Stânga Sus */
 .top-left-profile {
     position: absolute; top: 10px; left: 10px;
-    display: flex; align-items: center; padding: 8px; width: 360px;
+    display: flex; align-items: center; padding: 8px; width: 320px;
 }
 .avatar { font-size: 2rem; background: #b73e3e; padding: 5px; border-radius: 5px; border: 2px solid black; }
 .info { margin-left: 10px; flex: 1; display: flex; flex-direction: column; gap: 3px; }
 .name { font-size: 13px; text-shadow: 1px 1px 0 #000; display: flex; align-items: center; gap: 4px; }
 .tag { color: #888; font-size: 10px; }
-.copy-btn-hud { cursor: pointer; font-size: 11px; background: none; border: none; padding: 0; }
-.copy-btn-hud:hover { transform: scale(1.1); }
+.copy-btn-hud { cursor: pointer; font-size: 11px; background: none; border: none; padding: 0; color: #00bcd4; }
 
 .xp-bar-container { width: 100%; height: 14px; background: #000; border: 1px solid #333; position: relative; margin: 2px 0; }
 .xp-bar { width: 15%; height: 100%; background: #00bcd4; }
@@ -56,67 +58,79 @@ body {
 .logout-btn { background: none; border: none; color: #00bcd4; cursor: pointer; text-decoration: underline; font-size: 11px; font-family: 'Arial'; font-weight: bold; padding: 0; }
 .logout-btn:hover { color: #4dd0e1; }
 
-.left-panels { position: absolute; top: 85px; left: 10px; display: flex; flex-direction: column; gap: 10px; }
+/* Panouri stânga jos (Task-uri) */
+.left-panels { position: absolute; top: 90px; left: 10px; display: flex; flex-direction: column; gap: 8px; }
 .panel { width: 180px; text-align: center; overflow: hidden; }
-.panel-title { background: #164259; padding: 5px; font-size: 12px; text-shadow: 1px 1px 0 #000; }
-.panel-content { padding: 15px 5px; }
-.timer { font-size: 24px; font-weight: bold; }
+.panel-title { background: #164259; padding: 4px; font-size: 11px; text-shadow: 1px 1px 0 #000; }
+.panel-content { padding: 10px 5px; }
+.timer { font-size: 22px; font-weight: bold; color: #a4d823; }
 .small-text { font-size: 10px; font-family: 'Arial'; }
 
-.top-center-logo { position: absolute; top: 10px; left: 50%; transform: translateX(-50%); text-align: center; }
-.top-center-logo h1 { font-size: 40px; color: #a4d823; text-shadow: -2px -2px 0 #000, 2px -2px 0 #000, -2px 2px 0 #000, 2px 2px 0 #000; letter-spacing: 2px; margin:0;}
+/* Logo Centru Sus */
+.top-center-logo { position: absolute; top: 10px; left: 50%; transform: translateX(-50%); text-align: center; z-index: 5; }
+.top-center-logo h1 { font-size: 36px; color: #a4d823; text-shadow: -2px -2px 0 #000, 2px -2px 0 #000, -2px 2px 0 #000, 2px 2px 0 #000; letter-spacing: 2px; margin:0;}
 
-.center-play-menu { position: absolute; top: 120px; left: 50%; transform: translateX(-50%); width: 800px; display: flex; flex-direction: column; gap: 10px; }
-.play-controls { display: flex; height: 40px; }
-.name-input, .server-select { background: #555; color: white; border: 2px solid #000; padding: 0 10px; font-size: 14px; font-family: 'Arial'; }
+/* Meniu Principal Joc (Centru) */
+.center-play-menu { 
+    position: absolute; 
+    top: 110px; 
+    left: 50%; 
+    transform: translateX(-50%); 
+    width: 750px; 
+    max-width: 95vw;
+    display: flex; 
+    flex-direction: column; 
+    gap: 8px; 
+}
+.play-controls { display: flex; height: 45px; gap: 4px; }
+.name-input, .server-select { background: #555; color: white; border: 2px solid #000; padding: 0 10px; font-size: 14px; font-family: 'Arial'; border-radius: 4px; }
 .name-input { flex: 2; font-weight: bold; }
 .name-input:disabled { background: #333; color: #888; cursor: not-allowed; }
-.server-select { flex: 1; }
-.play-btn { background: #1a5c6e; color: white; border: 2px solid #000; font-size: 20px; width: 150px; cursor: pointer; transition: 0.2s; }
+.server-select { flex: 1.2; }
+.play-btn { background: #1a5c6e; color: white; border: 2px solid #000; font-size: 20px; width: 130px; cursor: pointer; border-radius: 4px; transition: 0.2s; }
 .play-btn:hover { background: #227b94; }
 
-.play-info { display: flex; gap: 10px; height: 250px; }
-.how-to-play, .ad-banner { flex: 1; padding: 15px; font-family: 'Arial'; font-size: 13px; line-height: 1.5; }
-.how-to-play h2 { font-family: 'Impact'; margin-bottom: 10px; text-shadow: 1px 1px 0 #000; }
-.ad-banner { background: #aaa; color: black; display: flex; align-items: center; justify-content: center; font-weight: bold; }
+.play-info { display: flex; gap: 8px; height: 230px; }
+.how-to-play, .ad-banner { flex: 1; padding: 12px; font-family: 'Arial'; font-size: 12px; line-height: 1.4; border-radius: 4px; }
+.how-to-play h2 { font-family: 'Impact'; margin-bottom: 8px; text-shadow: 1px 1px 0 #000; font-size: 18px; }
+.ad-banner { background: #aaa; color: black; display: flex; align-items: center; justify-content: center; font-weight: bold; font-family: 'Impact'; font-size: 15px; }
 
-.top-right-gems { position: absolute; top: 10px; right: 10px; background: #0d2836; border: 2px solid #000; padding: 5px 15px; color: white; font-size: 20px; border-radius: 5px; }
-.right-panels { position: absolute; top: 85px; right: 10px; display: flex; flex-direction: column; gap: 15px; }
-.big-btn { width: 220px; height: 60px; font-size: 20px; cursor: pointer; border-radius: 10px; text-shadow: 2px 2px 0 #000; transition: transform 0.1s; background: linear-gradient(to bottom, #33ccff, #2080a0); }
+/* Monede Sus Dreapta */
+.top-right-gems { position: absolute; top: 10px; right: 10px; background: #0d2836; border: 2px solid #000; padding: 5px 12px; color: white; font-size: 18px; border-radius: 5px; }
+
+/* Butoane Dreapta (Shop & Friends) */
+.right-panels { position: absolute; top: 80px; right: 10px; display: flex; flex-direction: column; gap: 10px; }
+.big-btn { width: 190px; height: 50px; font-size: 18px; cursor: pointer; border-radius: 8px; text-shadow: 2px 2px 0 #000; transition: transform 0.1s; background: linear-gradient(to bottom, #33ccff, #2080a0); }
 .big-btn:hover { transform: scale(1.02); }
 .shop { background: linear-gradient(to bottom, #ffcc00, #b38f00); }
 
-.footer { position: absolute; bottom: 0; left: 0; width: 100%; background: #000; display: flex; justify-content: space-between; padding: 5px 20px; color: white; font-family: 'Arial'; font-size: 12px; }
+/* Footer Jos */
+.footer { position: absolute; bottom: 0; left: 0; width: 100%; background: #000; display: flex; justify-content: space-between; padding: 4px 15px; color: white; font-family: 'Arial'; font-size: 11px; }
 .socials button { background: none; border: none; color: white; margin-right: 10px; cursor: pointer; }
 
 /* Ecran Splash & Loading */
-#splashScreen {
+#splashScreen, #loadingScreen {
     position: absolute; top: 0; left: 0; width: 100vw; height: 100vh;
     background: #0d2836; z-index: 104; display: flex; justify-content: center; align-items: center;
     transition: opacity 0.5s;
 }
 .splash-image { width: 150px; height: 150px; object-fit: contain; }
-
-#loadingScreen {
-    position: absolute; top: 0; left: 0; width: 100vw; height: 100vh;
-    background: #0d2836; z-index: 103; display: flex; justify-content: center; align-items: center;
-    transition: opacity 0.5s;
-}
-.loading-content { width: 400px; padding: 30px; text-align: center; display: flex; flex-direction: column; gap: 15px; }
-.loading-logo { font-size: 35px; color: #a4d823; text-shadow: 2px 2px 0 #000; }
-.loading-bar-container { width: 100%; height: 20px; background: #000; border: 2px solid #222; border-radius: 10px; overflow: hidden; position: relative; }
+.loading-content { width: 350px; padding: 25px; text-align: center; display: flex; flex-direction: column; gap: 12px; }
+.loading-logo { font-size: 30px; color: #a4d823; text-shadow: 2px 2px 0 #000; }
+.loading-bar-container { width: 100%; height: 18px; background: #000; border: 2px solid #222; border-radius: 9px; overflow: hidden; position: relative; }
 .loading-fill { width: 0%; height: 100%; background: linear-gradient(90deg, #1a5c6e, #4caf50); transition: width 0.1s; }
-.loading-percentage { font-size: 16px; color: white; font-family: 'Arial'; font-weight: bold; }
-.loading-status { font-size: 12px; color: #8aa4b0; font-family: 'Arial'; }
+.loading-percentage { font-size: 14px; color: white; font-family: 'Arial'; font-weight: bold; }
+.loading-status { font-size: 11px; color: #8aa4b0; font-family: 'Arial'; }
 
-/* Stilizare Autentificare & Modale */
+/* Modale */
 .modal { position: absolute; top: 0; left: 0; width: 100vw; height: 100vh; background: rgba(0, 0, 0, 0.85); z-index: 105; display: flex; justify-content: center; align-items: center; }
 .profile-modal-content, .modal-content {
-    width: 440px;
+    width: 400px;
+    max-width: 92vw;
     background-color: #0d2836;
     border: 2px solid #000;
     border-radius: 8px;
-    padding: 12px 18px;
+    padding: 12px 16px;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -124,211 +138,129 @@ body {
     font-family: 'Impact', 'Arial Black', sans-serif;
     position: relative;
     box-shadow: 0 0 20px rgba(0,0,0,0.8);
-    max-height: 95vh;
+    max-height: 90vh;
     overflow-y: auto;
 }
-.modal-content h2 { font-size: 24px; margin-bottom: 10px; text-shadow: 2px 2px 0 #000; }
-.profile-header {
-    width: 100%;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-bottom: 5px;
-}
-.profile-header h2 {
-    font-size: 24px;
-    text-shadow: 2px 2px 0 #000;
-    letter-spacing: 1px;
-    margin: 0 auto;
-    transform: translateX(15px);
-}
+.modal-content h2, .profile-header h2 { font-size: 22px; margin-bottom: 8px; text-shadow: 2px 2px 0 #000; }
+.profile-header { width: 100%; display: flex; justify-content: space-between; align-items: center; margin-bottom: 5px; }
 .profile-close-x {
-    background: #b73e3e;
-    color: white;
-    border: 2px solid #000;
-    width: 26px;
-    height: 26px;
-    font-size: 16px;
-    font-family: 'Impact';
-    cursor: pointer;
-    border-radius: 4px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+    background: #b73e3e; color: white; border: 2px solid #000; width: 24px; height: 24px;
+    font-size: 14px; font-family: 'Impact'; cursor: pointer; border-radius: 4px;
+    display: flex; align-items: center; justify-content: center;
 }
-.profile-close-x:hover { background: #d32f2f; }
-
-.auth-tabs { display: flex; width: 100%; margin-bottom: 15px; border-bottom: 2px solid #000; }
-.tab-btn { flex: 1; background: #11384a; color: white; border: none; padding: 10px; font-size: 16px; cursor: pointer; font-family: 'Impact'; }
+.auth-tabs { display: flex; width: 100%; margin-bottom: 12px; border-bottom: 2px solid #000; }
+.tab-btn { flex: 1; background: #11384a; color: white; border: none; padding: 8px; font-size: 15px; cursor: pointer; font-family: 'Impact'; }
 .tab-btn.active { background: #0d2836; border-top: 3px solid #00bcd4; }
 .auth-form-section { width: 100%; display: flex; flex-direction: column; gap: 8px; }
 
-.login-input { background: #333; color: white; border: 2px solid #000; padding: 6px 10px; font-size: 12px; font-family: Arial; }
+.login-input { background: #333; color: white; border: 2px solid #000; padding: 6px 10px; font-size: 12px; font-family: Arial; border-radius: 3px; }
 .full-width { width: 100%; }
 .login-error { color: #ff5252; font-size: 11px; font-family: Arial; min-height: 14px; }
-.auth-action-btn { width: 100%; height: 40px; font-size: 15px; margin-top: 3px; background: linear-gradient(to bottom, #4caf50, #2e7d32); }
+.auth-action-btn { width: 100%; height: 38px; font-size: 15px; margin-top: 3px; background: linear-gradient(to bottom, #4caf50, #2e7d32); border-radius: 4px; cursor: pointer; border: 2px solid #000; }
 
 .profile-avatar-container {
-    width: 130px;
-    height: 110px;
-    border: 3px solid #00bcd4;
-    background: #11384a;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: space-between;
-    padding: 6px;
-    margin-bottom: 6px;
-    border-radius: 4px;
+    width: 110px; height: 95px; border: 3px solid #00bcd4; background: #11384a;
+    display: flex; flex-direction: column; align-items: center; justify-content: space-between;
+    padding: 5px; margin-bottom: 6px; border-radius: 4px;
 }
-.profile-bird-avatar { font-size: 40px; margin-top: 2px; }
-.profile-avatar-tag {
-    font-size: 11px;
-    background: rgba(0,0,0,0.4);
-    padding: 2px 5px;
-    border-radius: 3px;
-    color: #fff;
-    text-shadow: 1px 1px 0 #000;
-}
+.profile-bird-avatar { font-size: 35px; }
+.profile-avatar-tag { font-size: 10px; background: rgba(0,0,0,0.4); padding: 2px 4px; border-radius: 3px; color: #fff; }
 
-.profile-stats-list {
-    width: 100%;
-    display: flex;
-    flex-direction: column;
-    gap: 3px;
-    font-family: 'Arial', sans-serif;
-    font-size: 11px;
-    font-weight: bold;
-    text-align: center;
-    margin-bottom: 6px;
-}
+.profile-stats-list { width: 100%; display: flex; flex-direction: column; gap: 3px; font-family: 'Arial'; font-size: 11px; font-weight: bold; text-align: center; margin-bottom: 6px; }
 .stat-row { text-shadow: 1px 1px 0 #000; }
-.copy-btn { color: #00bcd4; cursor: pointer; text-decoration: underline; font-size: 11px; }
-.copy-btn:hover { color: #4dd0e1; }
+.copy-btn { color: #00bcd4; cursor: pointer; text-decoration: underline; }
 
-.profile-xp-container {
-    width: 100%;
-    height: 14px;
-    background: #333;
-    border: 2px solid #000;
-    position: relative;
-    border-radius: 3px;
-    overflow: hidden;
-    margin: 2px 0;
-}
+.profile-xp-container { width: 100%; height: 12px; background: #333; border: 2px solid #000; position: relative; border-radius: 3px; overflow: hidden; margin: 2px 0; }
 .profile-xp-fill { height: 100%; background: #2196F3; width: 85%; }
-.profile-xp-text {
-    position: absolute; width: 100%; top: 0; left: 0;
-    font-size: 10px; color: white; line-height: 12px;
-    text-shadow: 1px 1px 0 #000; font-family: 'Impact';
-}
+.profile-xp-text { position: absolute; width: 100%; top: 0; left: 0; font-size: 9px; color: white; line-height: 10px; text-shadow: 1px 1px 0 #000; font-family: 'Impact'; text-align: center; }
 
-.change-password-box {
-    width: 100%;
-    background: #11384a;
-    border: 2px solid #000;
-    padding: 8px 10px;
-    border-radius: 5px;
-    display: flex;
-    flex-direction: column;
-    gap: 4px;
-}
-.change-password-box h3 { font-size: 13px; text-shadow: 1px 1px 0 #000; margin-bottom: 1px; }
+.change-password-box { width: 100%; background: #11384a; border: 2px solid #000; padding: 6px 8px; border-radius: 5px; display: flex; flex-direction: column; gap: 4px; margin-top: 5px; }
+.change-password-box h3 { font-size: 12px; margin-bottom: 1px; }
 
 .friend-add-section { display: flex; gap: 5px; width: 100%; }
-.list-container { background: #164259; border: 2px solid #000; padding: 10px; max-height: 150px; overflow-y: auto; list-style: none; font-size: 13px; width: 100%; margin-top: 5px; }
+.list-container { background: #164259; border: 2px solid #000; padding: 8px; max-height: 130px; overflow-y: auto; list-style: none; font-size: 12px; width: 100%; margin-top: 5px; border-radius: 4px; }
 .empty-text { color: #aaa; font-style: italic; }
-.close-modal-btn { background: #b73e3e; color: white; border: 2px solid #000; padding: 5px 15px; font-family: 'Impact'; cursor: pointer; border-radius: 4px; }
-
+.close-modal-btn { background: #b73e3e; color: white; border: 2px solid #000; padding: 4px 12px; font-family: 'Impact'; cursor: pointer; border-radius: 4px; }
 
 /* ========================================== */
-/* ADAPTĂRI PENTRU TELEFON (MOBILE / TABLETĂ) */
+/* ADAPTĂRI PERFECTE PENTRU TELEFON (MOBILE) */
 /* ========================================== */
 @media (max-width: 768px) {
     .top-left-profile {
-        width: 210px;
+        width: 195px;
         padding: 4px;
-        top: 5px;
-        left: 5px;
+        top: 6px;
+        left: 6px;
     }
-    .avatar { font-size: 1.3rem; padding: 3px; }
-    .name { font-size: 10px; }
-    .level { font-size: 10px; }
-    .logout-btn { font-size: 9px; }
-    .xp-bar-container { height: 10px; }
-    .xp-text { font-size: 7px; line-height: 10px; }
+    .avatar { font-size: 1.2rem; padding: 2px; }
+    .name { font-size: 9px; }
+    .level { font-size: 9px; }
+    .logout-btn { font-size: 8px; }
+    .xp-bar-container { height: 8px; }
+    .xp-text { font-size: 6px; line-height: 8px; }
 
-    .left-panels { display: none; } /* Ascundem panourile laterale de stânga pemobil ca să nu aglomereze ecranul */
+    .left-panels { display: none; } /* Ascundem panoul stânga pe mobil ca să nu aglomereze */
 
-    .top-center-logo h1 { font-size: 22px; }
+    .top-center-logo h1 { font-size: 20px; }
     .top-center-logo { top: 8px; }
 
     .top-right-gems {
-        top: 5px;
-        right: 5px;
-        font-size: 14px;
+        top: 6px;
+        right: 6px;
+        font-size: 13px;
         padding: 3px 8px;
     }
 
     .center-play-menu {
-        width: 94vw;
-        top: 75px;
-        gap: 6px;
+        width: 96vw;
+        top: 70px;
+        gap: 5px;
     }
 
     .play-controls {
-        flex-direction: column;
         height: auto;
-        gap: 4px;
+        flex-direction: row; /* Rămân pe rând sau se ajustează compact */
+        gap: 3px;
     }
     .name-input, .server-select {
-        height: 35px;
-        font-size: 12px;
+        height: 32px;
+        font-size: 11px;
+        padding: 0 5px;
     }
     .play-btn {
-        width: 100%;
-        height: 38px;
-        font-size: 16px;
+        width: 85px;
+        height: 32px;
+        font-size: 13px;
     }
 
     .play-info {
-        height: auto;
-        flex-direction: column;
+        height: 150px;
         gap: 5px;
-        padding: 5px;
+        padding: 6px;
     }
     .how-to-play {
-        padding: 8px;
-        font-size: 11px;
+        padding: 6px;
+        font-size: 10px;
     }
-    .how-to-play h2 { font-size: 14px; margin-bottom: 4px; }
-    .ad-banner { display: none; } /* Ascundem reclama pe mobil ca să economisim spațiu */
+    .how-to-play h2 { font-size: 12px; margin-bottom: 2px; }
+    .ad-banner { font-size: 11px; }
 
     .right-panels {
         top: auto;
-        bottom: 35px;
-        right: 5px;
+        bottom: 30px;
+        right: 6px;
         flex-direction: row;
-        gap: 5px;
+        gap: 4px;
     }
     .big-btn {
-        width: 95px;
-        height: 35px;
-        font-size: 13px;
-        border-radius: 6px;
+        width: 85px;
+        height: 30px;
+        font-size: 11px;
+        border-radius: 4px;
     }
 
     .footer {
-        padding: 3px 10px;
-        font-size: 9px;
+        padding: 2px 8px;
+        font-size: 8px;
     }
-
-    .modal-content, .profile-modal-content {
-        width: 94vw;
-        padding: 10px;
-        max-height: 90vh;
-    }
-    .modal-content h2 { font-size: 18px; margin-bottom: 5px; }
-    .profile-header h2 { font-size: 18px; }
-    .login-input { padding: 5px 8px; font-size: 11px; }
 }
