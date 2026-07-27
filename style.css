@@ -239,3 +239,96 @@ body {
 .list-container { background: #164259; border: 2px solid #000; padding: 10px; max-height: 150px; overflow-y: auto; list-style: none; font-size: 13px; width: 100%; margin-top: 5px; }
 .empty-text { color: #aaa; font-style: italic; }
 .close-modal-btn { background: #b73e3e; color: white; border: 2px solid #000; padding: 5px 15px; font-family: 'Impact'; cursor: pointer; border-radius: 4px; }
+
+
+/* ========================================== */
+/* ADAPTĂRI PENTRU TELEFON (MOBILE / TABLETĂ) */
+/* ========================================== */
+@media (max-width: 768px) {
+    .top-left-profile {
+        width: 210px;
+        padding: 4px;
+        top: 5px;
+        left: 5px;
+    }
+    .avatar { font-size: 1.3rem; padding: 3px; }
+    .name { font-size: 10px; }
+    .level { font-size: 10px; }
+    .logout-btn { font-size: 9px; }
+    .xp-bar-container { height: 10px; }
+    .xp-text { font-size: 7px; line-height: 10px; }
+
+    .left-panels { display: none; } /* Ascundem panourile laterale de stânga pemobil ca să nu aglomereze ecranul */
+
+    .top-center-logo h1 { font-size: 22px; }
+    .top-center-logo { top: 8px; }
+
+    .top-right-gems {
+        top: 5px;
+        right: 5px;
+        font-size: 14px;
+        padding: 3px 8px;
+    }
+
+    .center-play-menu {
+        width: 94vw;
+        top: 75px;
+        gap: 6px;
+    }
+
+    .play-controls {
+        flex-direction: column;
+        height: auto;
+        gap: 4px;
+    }
+    .name-input, .server-select {
+        height: 35px;
+        font-size: 12px;
+    }
+    .play-btn {
+        width: 100%;
+        height: 38px;
+        font-size: 16px;
+    }
+
+    .play-info {
+        height: auto;
+        flex-direction: column;
+        gap: 5px;
+        padding: 5px;
+    }
+    .how-to-play {
+        padding: 8px;
+        font-size: 11px;
+    }
+    .how-to-play h2 { font-size: 14px; margin-bottom: 4px; }
+    .ad-banner { display: none; } /* Ascundem reclama pe mobil ca să economisim spațiu */
+
+    .right-panels {
+        top: auto;
+        bottom: 35px;
+        right: 5px;
+        flex-direction: row;
+        gap: 5px;
+    }
+    .big-btn {
+        width: 95px;
+        height: 35px;
+        font-size: 13px;
+        border-radius: 6px;
+    }
+
+    .footer {
+        padding: 3px 10px;
+        font-size: 9px;
+    }
+
+    .modal-content, .profile-modal-content {
+        width: 94vw;
+        padding: 10px;
+        max-height: 90vh;
+    }
+    .modal-content h2 { font-size: 18px; margin-bottom: 5px; }
+    .profile-header h2 { font-size: 18px; }
+    .login-input { padding: 5px 8px; font-size: 11px; }
+}
