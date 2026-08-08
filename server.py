@@ -340,7 +340,7 @@ def api_drafts():
 
 @app.route("/api/textures", methods=["POST"])
 def api_publish_texture():
-    session_id, session_obj = require_authorized()
+    session_id, session_obj, authorized = get_session_data()
     body = request.get_json(silent=True) or {}
     name = body.get("name", "").strip()
     description = body.get("description", "").strip()

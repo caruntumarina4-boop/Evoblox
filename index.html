@@ -1313,7 +1313,13 @@ function createCanvasPrompt() {
 }
 
 function setupInterface() {
-    document.getElementById('openCreateButton').addEventListener('click', () => openModal(document.getElementById('createAccessModal')));
+    document.getElementById('openCreateButton').addEventListener('click', () => {
+        closeModal(document.getElementById('createAccessModal'));
+        openModal(document.getElementById('createEditorModal'));
+        if (!canvas.width || !canvas.height) {
+            initNewTexture(256, 256);
+        }
+    });
     document.getElementById('closeCreateAccess').addEventListener('click', () => closeModal(document.getElementById('createAccessModal')));
     document.getElementById('cancelCreateAccess').addEventListener('click', () => closeModal(document.getElementById('createAccessModal')));
     document.getElementById('togglePassword').addEventListener('click', () => {
