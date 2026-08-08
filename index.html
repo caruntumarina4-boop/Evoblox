@@ -3,6 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
 <title>Evoblox Texture Library</title>
 
 <style>
@@ -20,7 +21,7 @@ body {
 header {
     position: sticky;
     top: 0;
-    z-index: 10;
+    z-index: 100;
     background: #181818;
     padding: 18px;
     border-bottom: 1px solid #333;
@@ -28,16 +29,18 @@ header {
 
 h1 {
     margin: 0 0 12px;
+    font-size: 26px;
 }
 
 #search {
     width: 100%;
     padding: 12px;
-    border: 1px solid #444;
     border-radius: 8px;
+    border: 1px solid #444;
     background: #222;
     color: white;
     font-size: 16px;
+    outline: none;
 }
 
 #count {
@@ -49,10 +52,22 @@ main {
     padding: 20px;
 }
 
+.folder {
+    margin-bottom: 30px;
+}
+
+.folder-title {
+    font-size: 22px;
+    font-weight: bold;
+    margin-bottom: 12px;
+    padding-bottom: 8px;
+    border-bottom: 1px solid #333;
+}
+
 .grid {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
-    gap: 16px;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    gap: 15px;
 }
 
 .card {
@@ -64,9 +79,9 @@ main {
 
 .card img {
     width: 100%;
-    height: 220px;
-    object-fit: contain;
+    height: 200px;
     display: block;
+    object-fit: contain;
     background: #080808;
 }
 
@@ -113,12 +128,26 @@ button {
     background: white;
     color: black;
 }
+
+.loading {
+    text-align: center;
+    padding: 50px;
+    color: #aaa;
+}
+
+.error {
+    background: #300;
+    border: 1px solid #700;
+    padding: 20px;
+    border-radius: 10px;
+}
 </style>
 </head>
 
 <body>
 
 <header>
+
     <h1>🍌 Evoblox Texture Library</h1>
 
     <input
@@ -127,79 +156,273 @@ button {
         placeholder="Caută imagine sau folder..."
     >
 
-    <div id="count">0 imagini</div>
+    <div id="count">
+        Se încarcă imaginile...
+    </div>
+
 </header>
 
 <main>
-    <div id="grid" class="grid"></div>
+
+    <div id="content" class="loading">
+        Se încarcă toate imaginile din GitHub...
+    </div>
+
 </main>
 
 <script>
 
-/*
-====================================================
-AICI VOM PUNE LISTA IMAGINILOR
-====================================================
-*/
+const OWNER = "caruntumarina4-boop";
+const REPOSITORY = "Evoblox";
+const BRANCH = "main";
 
-const images = [
+const BASE_URL =
+    `https://raw.githubusercontent.com/${OWNER}/${REPOSITORY}/${BRANCH}`;
 
-];
+const API_URL =
+    `https://api.github.com/repos/${OWNER}/${REPOSITORY}/git/trees/${BRANCH}?recursive=1`;
 
-const grid = document.getElementById("grid");
-const search = document.getElementById("search");
-const count = document.getElementById("count");
+let allImages = [];
 
-function showImages(list) {
 
-    grid.innerHTML = "";
+async function loadImages() {
 
-    list.forEach((image, index) => {
+    const content = document.getElementById("content");
+    const count = document.getElementById("count");
 
-        const card = document.createElement("div");
-        card.className = "card";
+    try {
 
-        card.innerHTML = `
-            <a href="${image.url}" target="_blank">
-                <img src="${image.url}" loading="lazy">
-            </a>
+        const response = await fetch(API_URL);
 
-            <div class="info">
+        if (!response.ok) {
+            throw new Error("GitHub API error: " + response.status);
+        }
 
-                <div class="name">
-                    #${index + 1} — ${image.name}
-                </div>
+        const data = await response.json();
 
-                <div class="path">
-                    ${image.path}
-                </div>
+        if (!data.tree) {
+            throw new Error("GitHub nu a returnat lista fișierelor.");
+        }
 
-                <div class="buttons">
+        allImages = data.tree
+            .filter(item => item.type === "blob")
+            .filter(item => {
 
-                    <a
-                        class="open"
-                        href="${image.url}"
-                        target="_blank"
-                    >
-                        Open
-                    </a>
+                const extension =
+                    item.path.split(".").pop().toLowerCase();
 
-                    <button
-                        onclick="copyLink('${image.url}', this)"
-                    >
-                        Copy link
-                    </button>
+                return [
+                    "png",
+                    "jpg",
+                    "jpeg",
+                    "webp",
+                    "gif",
+                    "bmp"
+                ].includes(extension);
 
-                </div>
+            })
+            .map(item => {
 
+                const encodedPath = item.path
+                    .split("/")
+                    .map(part => encodeURIComponent(part))
+                    .join("/");
+
+                return {
+                    name: item.path.split("/").pop(),
+                    path: item.path,
+                    url: `${BASE_URL}/${encodedPath}`
+                };
+
+            });
+
+        renderImages(allImages);
+
+    } catch (error) {
+
+        content.innerHTML = `
+            <div class="error">
+                <h2>Nu am putut încărca imaginile.</h2>
+                <p>${error.message}</p>
             </div>
         `;
 
-        grid.appendChild(card);
+        count.textContent = "Eroare";
+
+        console.error(error);
+    }
+}
+
+
+function renderImages(images) {
+
+    const content = document.getElementById("content");
+    const count = document.getElementById("count");
+
+    content.className = "";
+
+    if (images.length === 0) {
+
+        content.innerHTML = `
+            <div class="loading">
+                Nu există imagini găsite.
+            </div>
+        `;
+
+        count.textContent = "0 imagini";
+
+        return;
+    }
+
+
+    const folders = {};
+
+
+    images.forEach(image => {
+
+        const parts = image.path.split("/");
+
+        let folder;
+
+        if (parts.length === 1) {
+            folder = "ROOT";
+        } else {
+            folder = parts[0];
+        }
+
+        if (!folders[folder]) {
+            folders[folder] = [];
+        }
+
+        folders[folder].push(image);
+
     });
 
-    count.textContent = list.length + " imagini";
+
+    content.innerHTML = "";
+
+
+    Object.keys(folders)
+        .sort()
+        .forEach(folderName => {
+
+            const folder = document.createElement("section");
+
+            folder.className = "folder";
+
+
+            const title = document.createElement("div");
+
+            title.className = "folder-title";
+
+            title.textContent =
+                folderName + " (" + folders[folderName].length + ")";
+
+
+            const grid = document.createElement("div");
+
+            grid.className = "grid";
+
+
+            folders[folderName].forEach((image, index) => {
+
+                const card = document.createElement("div");
+
+                card.className = "card";
+
+
+                card.innerHTML = `
+
+                    <a
+                        href="${image.url}"
+                        target="_blank"
+                    >
+
+                        <img
+                            src="${image.url}"
+                            loading="lazy"
+                            alt="${escapeHtml(image.name)}"
+                        >
+
+                    </a>
+
+
+                    <div class="info">
+
+                        <div class="name">
+                            ${index + 1}. ${escapeHtml(image.name)}
+                        </div>
+
+
+                        <div class="path">
+                            ${escapeHtml(image.path)}
+                        </div>
+
+
+                        <div class="buttons">
+
+                            <a
+                                class="open"
+                                href="${image.url}"
+                                target="_blank"
+                            >
+                                Open
+                            </a>
+
+
+                            <button
+                                onclick="copyLink('${escapeAttribute(image.url)}', this)"
+                            >
+                                Copy link
+                            </button>
+
+                        </div>
+
+                    </div>
+
+                `;
+
+
+                grid.appendChild(card);
+
+            });
+
+
+            folder.appendChild(title);
+
+            folder.appendChild(grid);
+
+            content.appendChild(folder);
+
+        });
+
+
+    count.textContent =
+        images.length + " imagini";
+
 }
+
+
+function escapeHtml(text) {
+
+    return text
+        .replaceAll("&", "&amp;")
+        .replaceAll("<", "&lt;")
+        .replaceAll(">", "&gt;")
+        .replaceAll('"', "&quot;")
+        .replaceAll("'", "&#039;");
+
+}
+
+
+function escapeAttribute(text) {
+
+    return text
+        .replaceAll("\\", "\\\\")
+        .replaceAll("'", "\\'");
+
+}
+
 
 async function copyLink(url, button) {
 
@@ -207,34 +430,56 @@ async function copyLink(url, button) {
 
         await navigator.clipboard.writeText(url);
 
-        const old = button.textContent;
+        const oldText = button.textContent;
 
-        button.textContent = "Copied!";
+        button.textContent = "✓ Copiat!";
 
         setTimeout(() => {
-            button.textContent = old;
+
+            button.textContent = oldText;
+
         }, 1200);
 
     } catch {
 
-        prompt("Copiază linkul:", url);
+        prompt(
+            "Copiază linkul:",
+            url
+        );
 
     }
+
 }
 
-search.addEventListener("input", () => {
 
-    const text = search.value.toLowerCase();
+document
+    .getElementById("search")
+    .addEventListener("input", function() {
 
-    const filtered = images.filter(image =>
-        image.name.toLowerCase().includes(text) ||
-        image.path.toLowerCase().includes(text)
-    );
+        const text =
+            this.value.toLowerCase();
 
-    showImages(filtered);
-});
+        const filtered =
+            allImages.filter(image =>
 
-showImages(images);
+                image.name
+                    .toLowerCase()
+                    .includes(text)
+
+                ||
+
+                image.path
+                    .toLowerCase()
+                    .includes(text)
+
+            );
+
+        renderImages(filtered);
+
+    });
+
+
+loadImages();
 
 </script>
 
