@@ -1,0 +1,974 @@
+{
+  "modheader": 2,
+  "exportedAt": "2026-09-09T15:17:16.534Z",
+  "profiles": [
+    {
+      "badge": 1,
+      "color": "#4f46e5",
+      "enabled": true,
+      "filters": [],
+      "id": "07dce609-6889-474a-afa4-61c0ab7c7324",
+      "name": "EvoBananaYT",
+      "paused": false,
+      "sections": {
+        "cookie": {
+          "enabled": true,
+          "rules": []
+        },
+        "csp": {
+          "enabled": true,
+          "rules": []
+        },
+        "redirect": {
+          "enabled": true,
+          "rules": [
+            {
+              "enabled": true,
+              "id": "23f0dafb-632b-4609-b02d-7c29fa1d6757",
+              "name": "https://cdn.eu.evoworld.io/sprites/characters/ghost/standard/flying/1.png",
+              "value": "https://cdn.eu.evoworld.io/sprites/characters/ghost/halloween2022/flying/1.png"
+            },
+            {
+              "enabled": true,
+              "id": "517b909a-bfd0-402f-bf3a-0f61a81614e1",
+              "name": "https://cdn.eu.evoworld.io/sprites/characters/ghost/standard/flying/2.png",
+              "value": "https://cdn.eu.evoworld.io/sprites/characters/ghost/halloween2022/flying/2.png"
+            },
+            {
+              "enabled": true,
+              "id": "0a7cf8a4-c67b-4c5c-8a9a-281d4d5b4d68",
+              "name": "https://cdn.eu.evoworld.io/sprites/characters/ghost/standard/flying/3.png",
+              "value": "https://cdn.eu.evoworld.io/sprites/characters/ghost/halloween2022/flying/3.png"
+            },
+            {
+              "enabled": true,
+              "id": "53bcdd12-b811-4b1a-b589-9cf21740c951",
+              "name": "https://cdn.eu.evoworld.io/sprites/characters/ghost/standard/flying/4.png",
+              "value": "https://cdn.eu.evoworld.io/sprites/characters/ghost/halloween2022/flying/4.png"
+            },
+            {
+              "enabled": true,
+              "id": "fdcc036d-6c79-44b9-b943-734636ff825f",
+              "name": "https://cdn.eu.evoworld.io/sprites/characters/ghost/standard/flying/5.png",
+              "value": "https://cdn.eu.evoworld.io/sprites/characters/ghost/halloween2022/flying/5.png"
+            },
+            {
+              "enabled": true,
+              "id": "aa05b093-1864-453b-8e76-43d880cdcf9d",
+              "name": "https://cdn.eu.evoworld.io/sprites/characters/ghost/standard/flying/6.png",
+              "value": "https://cdn.eu.evoworld.io/sprites/characters/ghost/halloween2022/flying/6.png"
+            },
+            {
+              "enabled": true,
+              "id": "a921b82e-a9ae-48b3-9323-1e972e8469a1",
+              "name": "https://cdn.eu.evoworld.io/sprites/characters/ghost/standard/flying/7.png",
+              "value": "https://cdn.eu.evoworld.io/sprites/characters/ghost/halloween2022/flying/7.png"
+            },
+            {
+              "enabled": true,
+              "id": "dcc219b4-d742-4271-b182-c7130cd9f59d",
+              "name": "https://cdn.eu.evoworld.io/sprites/characters/ghostlyReaper/standard/attack/1.png",
+              "value": "https://cdn.eu.evoworld.io/sprites/characters/ghostlyReaper/demonic/attack/1.png"
+            },
+            {
+              "enabled": true,
+              "id": "b46a2b28-f824-425b-8f78-4ac230b07d18",
+              "name": "https://cdn.eu.evoworld.io/sprites/characters/ghostlyReaper/standard/attack/2.png",
+              "value": "https://cdn.eu.evoworld.io/sprites/characters/ghostlyReaper/demonic/attack/2.png"
+            },
+            {
+              "enabled": true,
+              "id": "a4152d7a-ac85-4718-aa00-da2566fe1869",
+              "name": "https://cdn.eu.evoworld.io/sprites/characters/ghostlyReaper/standard/attack/3.png",
+              "value": "https://cdn.eu.evoworld.io/sprites/characters/ghostlyReaper/demonic/attack/3.png"
+            },
+            {
+              "enabled": true,
+              "id": "7975c20c-2da8-46f9-942b-beea09559567",
+              "name": "https://cdn.eu.evoworld.io/sprites/characters/ghostlyReaper/standard/attack/4.png",
+              "value": "https://cdn.eu.evoworld.io/sprites/characters/ghostlyReaper/demonic/attack/4.png"
+            },
+            {
+              "enabled": true,
+              "id": "1751763e-f01b-4e88-87d3-11ee7a644c51",
+              "name": "https://cdn.eu.evoworld.io/sprites/characters/ghostlyReaper/standard/attack/5.png",
+              "value": "https://cdn.eu.evoworld.io/sprites/characters/ghostlyReaper/demonic/attack/5.png"
+            },
+            {
+              "enabled": true,
+              "id": "344b183b-bcfc-4876-aabd-a4b36da2419e",
+              "name": "https://cdn.eu.evoworld.io/sprites/characters/ghostlyReaper/standard/attack/6.png",
+              "value": "https://cdn.eu.evoworld.io/sprites/characters/ghostlyReaper/demonic/attack/6.png"
+            },
+            {
+              "enabled": true,
+              "id": "35baaa0a-07ef-4380-a8d5-136306492466",
+              "name": "https://cdn.eu.evoworld.io/sprites/characters/ghostlyReaper/standard/attack/7.png",
+              "value": "https://cdn.eu.evoworld.io/sprites/characters/ghostlyReaper/demonic/attack/7.png"
+            },
+            {
+              "enabled": true,
+              "id": "198aa970-194d-4716-83f8-d1eab8e7b827",
+              "name": "https://cdn.eu.evoworld.io/sprites/characters/ghostlyReaper/standard/attack/8.png",
+              "value": "https://cdn.eu.evoworld.io/sprites/characters/ghostlyReaper/demonic/attack/8.png"
+            },
+            {
+              "enabled": true,
+              "id": "e6d53088-f28a-4ae0-9914-6ee3603684e5",
+              "name": "https://cdn.eu.evoworld.io/sprites/characters/ghostlyReaper/standard/attack/9.png",
+              "value": "https://cdn.eu.evoworld.io/sprites/characters/ghostlyReaper/demonic/attack/9.png"
+            },
+            {
+              "enabled": true,
+              "id": "7edd9ceb-ebd2-4b4a-b22c-5564f2167b0d",
+              "name": "https://cdn.eu.evoworld.io/sprites/characters/ghostlyReaper/standard/attack/10.png",
+              "value": "https://cdn.eu.evoworld.io/sprites/characters/ghostlyReaper/demonic/attack/10.png"
+            },
+            {
+              "enabled": true,
+              "id": "cc5db6d8-7a8a-4639-91ec-44dc4ccb66da",
+              "name": "https://cdn.eu.evoworld.io/sprites/characters/ghostlyReaper/standard/attack/11.png",
+              "value": "https://cdn.eu.evoworld.io/sprites/characters/ghostlyReaper/demonic/attack/11.png"
+            },
+            {
+              "enabled": true,
+              "id": "c2635a22-3448-4755-8ec3-1ecb36a83b7f",
+              "name": "https://cdn.eu.evoworld.io/sprites/characters/ghostlyReaper/standard/attack/12.png",
+              "value": "https://cdn.eu.evoworld.io/sprites/characters/ghostlyReaper/demonic/attack/12.png"
+            },
+            {
+              "enabled": true,
+              "id": "3dc6355d-fb0e-4289-b26a-58eb95b95919",
+              "name": "https://cdn.eu.evoworld.io/sprites/characters/ghostlyReaper/standard/attack/13.png",
+              "value": "https://cdn.eu.evoworld.io/sprites/characters/ghostlyReaper/demonic/attack/13.png"
+            },
+            {
+              "enabled": true,
+              "id": "a70b43d2-ffc2-428d-ad82-81222819b65b",
+              "name": "https://cdn.eu.evoworld.io/sprites/characters/ghostlyReaper/standard/attack/14.png",
+              "value": "https://cdn.eu.evoworld.io/sprites/characters/ghostlyReaper/demonic/attack/14.png"
+            },
+            {
+              "enabled": true,
+              "id": "3641f418-3858-4282-9c66-1c4e8f846022",
+              "name": "https://cdn.eu.evoworld.io/sprites/characters/ghostlyReaper/standard/attack/15.png",
+              "value": "https://cdn.eu.evoworld.io/sprites/characters/ghostlyReaper/demonic/attack/15.png"
+            },
+            {
+              "enabled": true,
+              "id": "4c0ab753-31e1-41ee-b9d7-68c3810d31c0",
+              "name": "https://cdn.eu.evoworld.io/sprites/characters/ghostlyReaper/standard/attack/16.png",
+              "value": "https://cdn.eu.evoworld.io/sprites/characters/ghostlyReaper/demonic/attack/16.png"
+            },
+            {
+              "enabled": true,
+              "id": "53116e21-b240-496c-b689-107793defc34",
+              "name": "https://cdn.eu.evoworld.io/sprites/characters/ghostlyReaper/standard/flying/1.png",
+              "value": "https://cdn.eu.evoworld.io/sprites/characters/ghostlyReaper/demonic/flying/1.png"
+            },
+            {
+              "enabled": true,
+              "id": "333d437c-c968-46d2-afab-d260655c41ec",
+              "name": "https://cdn.eu.evoworld.io/sprites/characters/ghostlyReaper/standard/flying/2.png",
+              "value": "https://cdn.eu.evoworld.io/sprites/characters/ghostlyReaper/demonic/flying/2.png"
+            },
+            {
+              "enabled": true,
+              "id": "add118e8-58a5-4a70-bc60-027b850cd5ab",
+              "name": "https://cdn.eu.evoworld.io/sprites/characters/ghostlyReaper/standard/flying/3.png",
+              "value": "https://cdn.eu.evoworld.io/sprites/characters/ghostlyReaper/demonic/flying/3.png"
+            },
+            {
+              "enabled": true,
+              "id": "28a9a4b5-033a-4276-8e66-094b2dc3bb75",
+              "name": "https://cdn.eu.evoworld.io/sprites/characters/ghostlyReaper/standard/flying/4.png",
+              "value": "https://cdn.eu.evoworld.io/sprites/characters/ghostlyReaper/demonic/flying/4.png"
+            },
+            {
+              "enabled": true,
+              "id": "0c6c2a15-c4ef-4132-8fb7-844be7ac2869",
+              "name": "https://cdn.eu.evoworld.io/sprites/characters/ghostlyReaper/standard/flying/5.png",
+              "value": "https://cdn.eu.evoworld.io/sprites/characters/ghostlyReaper/demonic/flying/5.png"
+            },
+            {
+              "enabled": true,
+              "id": "73dc21c0-4796-48b8-abd7-3e2f79678881",
+              "name": "https://cdn.eu.evoworld.io/sprites/characters/ghostlyReaper/standard/flying/6.png",
+              "value": "https://cdn.eu.evoworld.io/sprites/characters/ghostlyReaper/demonic/flying/6.png"
+            },
+            {
+              "enabled": true,
+              "id": "31da463d-8c7c-4cf8-bf69-9a3fb5f15c7b",
+              "name": "https://cdn.eu.evoworld.io/sprites/characters/ghostlyReaper/standard/flying/7.png",
+              "value": "https://cdn.eu.evoworld.io/sprites/characters/ghostlyReaper/demonic/flying/7.png"
+            },
+            {
+              "enabled": true,
+              "id": "ee4955b9-2bd6-4a6d-9318-7892d3c0318c",
+              "name": "https://cdn.eu.evoworld.io/sprites/characters/ghostlyReaper/standard/flying/8.png",
+              "value": "https://cdn.eu.evoworld.io/sprites/characters/ghostlyReaper/demonic/flying/8.png"
+            },
+            {
+              "enabled": true,
+              "id": "9877c763-242e-4b61-ab51-4f1ee50824ca",
+              "name": "https://cdn.eu.evoworld.io/sprites/characters/ghostlyReaper/standard/flying/9.png",
+              "value": "https://cdn.eu.evoworld.io/sprites/characters/ghostlyReaper/demonic/flying/9.png"
+            },
+            {
+              "enabled": true,
+              "id": "aca2e1b7-8472-4455-afb0-132a9de60627",
+              "name": "https://cdn.eu.evoworld.io/sprites/characters/ghostlyReaper/standard/flying/10.png",
+              "value": "https://cdn.eu.evoworld.io/sprites/characters/ghostlyReaper/demonic/flying/10.png"
+            },
+            {
+              "enabled": true,
+              "id": "5cdab0c5-736e-43a2-a1cb-7a3fb3c43a7c",
+              "name": "https://cdn.eu.evoworld.io/sprites/characters/ghostlyReaper/standard/flying/11.png",
+              "value": "https://cdn.eu.evoworld.io/sprites/characters/ghostlyReaper/demonic/flying/11.png"
+            },
+            {
+              "enabled": true,
+              "id": "8c58b3dc-588e-4513-b872-d5f7c6bdb5f8",
+              "name": "https://cdn.eu.evoworld.io/sprites/characters/ghostlyReaper/standard/flying/12.png",
+              "value": "https://cdn.eu.evoworld.io/sprites/characters/ghostlyReaper/demonic/flying/12.png"
+            },
+            {
+              "enabled": true,
+              "id": "f3860dda-6ac8-4574-89b4-65cfc047a6ad",
+              "name": "https://cdn.eu.evoworld.io/sprites/characters/ghostlyReaper/standard/flying/13.png",
+              "value": "https://cdn.eu.evoworld.io/sprites/characters/ghostlyReaper/demonic/flying/13.png"
+            },
+            {
+              "enabled": true,
+              "id": "e66f3875-0ac6-441d-b8f6-cc25b8e9edf7",
+              "name": "https://cdn.eu.evoworld.io/sprites/characters/ghostlyReaper/standard/flying/14.png",
+              "value": "https://cdn.eu.evoworld.io/sprites/characters/ghostlyReaper/demonic/flying/14.png"
+            },
+            {
+              "enabled": true,
+              "id": "de18d48b-cdbe-4c4f-8f38-5d0756a1200c",
+              "name": "https://cdn.eu.evoworld.io/sprites/characters/ghostlyReaper/standard/flying/15.png",
+              "value": "https://cdn.eu.evoworld.io/sprites/characters/ghostlyReaper/demonic/flying/15.png"
+            },
+            {
+              "enabled": true,
+              "id": "7913ed7d-f99d-40ae-8ef0-605b33fb176a",
+              "name": "https://cdn.eu.evoworld.io/sprites/characters/ghostlyReaper/standard/flying/16.png",
+              "value": "https://cdn.eu.evoworld.io/sprites/characters/ghostlyReaper/standard/flying/15.png"
+            },
+            {
+              "enabled": true,
+              "id": "98f10539-f6ac-4038-8624-1b5db2396302",
+              "name": "https://cdn.eu.evoworld.io/sprites/characters/ghostlyReaper/standard/flying/17.png",
+              "value": "https://cdn.eu.evoworld.io/sprites/characters/ghostlyReaper/demonic/flying/17.png"
+            },
+            {
+              "enabled": true,
+              "id": "82f97324-79b4-4077-b002-7b79834b60b3",
+              "name": "https://cdn.eu.evoworld.io/sprites/characters/grimReaper/black/idle/1.png",
+              "value": "https://cdn.eu.evoworld.io/sprites/characters/grimReaper/imperial/idle/1.png"
+            },
+            {
+              "enabled": true,
+              "id": "62806492-cb69-4177-a477-b1b6fc662f90",
+              "name": "https://cdn.eu.evoworld.io/sprites/characters/grimReaper/black/idle/2.png",
+              "value": "https://cdn.eu.evoworld.io/sprites/characters/grimReaper/imperial/idle/2.png"
+            },
+            {
+              "enabled": true,
+              "id": "5b6fd41e-efc5-417f-97dd-32c0033f34e3",
+              "name": "https://cdn.eu.evoworld.io/sprites/characters/grimReaper/black/idle/3.png",
+              "value": "https://cdn.eu.evoworld.io/sprites/characters/grimReaper/imperial/idle/3.png"
+            },
+            {
+              "enabled": true,
+              "id": "c6b42943-c136-419c-bccc-17ebcb487342",
+              "name": "https://cdn.eu.evoworld.io/sprites/characters/grimReaper/black/idle/4.png",
+              "value": "https://cdn.eu.evoworld.io/sprites/characters/grimReaper/imperial/idle/4.png"
+            },
+            {
+              "enabled": true,
+              "id": "e5aaf173-6c87-4bc5-8981-2da5fdbe23e2",
+              "name": "https://cdn.eu.evoworld.io/sprites/characters/grimReaper/black/idle/5.png",
+              "value": "https://cdn.eu.evoworld.io/sprites/characters/grimReaper/imperial/idle/5.png"
+            },
+            {
+              "enabled": true,
+              "id": "4b63b96e-3b5d-4683-94a5-9b3266b606ae",
+              "name": "https://cdn.eu.evoworld.io/sprites/characters/grimReaper/black/idle/6.png",
+              "value": "https://cdn.eu.evoworld.io/sprites/characters/grimReaper/imperial/idle/6.png"
+            },
+            {
+              "enabled": true,
+              "id": "8483ff66-8fbe-4c29-9304-ed679b0600e0",
+              "name": "https://cdn.eu.evoworld.io/sprites/characters/grimReaper/black/flying/1.png",
+              "value": "https://cdn.eu.evoworld.io/sprites/characters/grimReaper/imperial/flying/1.png"
+            },
+            {
+              "enabled": true,
+              "id": "2178e460-9066-4729-ab32-2431886c6411",
+              "name": "https://cdn.eu.evoworld.io/sprites/characters/grimReaper/black/flying/2.png",
+              "value": "https://cdn.eu.evoworld.io/sprites/characters/grimReaper/imperial/flying/2.png"
+            },
+            {
+              "enabled": true,
+              "id": "216c6c8a-668c-447d-a14f-3b376680f13e",
+              "name": "https://cdn.eu.evoworld.io/sprites/characters/grimReaper/black/flying/3.png",
+              "value": "https://cdn.eu.evoworld.io/sprites/characters/grimReaper/imperial/flying/3.png"
+            },
+            {
+              "enabled": true,
+              "id": "02b630b4-a658-4b7c-8583-b65b87396c99",
+              "name": "https://cdn.eu.evoworld.io/sprites/characters/grimReaper/black/flying/4.png",
+              "value": "https://cdn.eu.evoworld.io/sprites/characters/grimReaper/imperial/flying/4.png"
+            },
+            {
+              "enabled": true,
+              "id": "8e670070-7a96-4328-912b-190209645f98",
+              "name": "https://cdn.eu.evoworld.io/sprites/characters/grimReaper/black/flying/5.png",
+              "value": "https://cdn.eu.evoworld.io/sprites/characters/grimReaper/imperial/flying/5.png"
+            },
+            {
+              "enabled": true,
+              "id": "650803f6-7147-4783-8ecd-f0e33fdf3287",
+              "name": "https://cdn.eu.evoworld.io/sprites/characters/grimReaper/black/attack/1.png",
+              "value": "https://cdn.eu.evoworld.io/sprites/characters/grimReaper/imperial/attack/1.png"
+            },
+            {
+              "enabled": true,
+              "id": "7c2e3453-665d-414f-ae9f-2250160180d6",
+              "name": "https://cdn.eu.evoworld.io/sprites/characters/grimReaper/black/attack/2.png",
+              "value": "https://cdn.eu.evoworld.io/sprites/characters/grimReaper/imperial/attack/2.png"
+            },
+            {
+              "enabled": true,
+              "id": "900267ec-4823-4961-8e10-030b80c4d0e7",
+              "name": "https://cdn.eu.evoworld.io/sprites/characters/grimReaper/black/attack/3.png",
+              "value": "https://cdn.eu.evoworld.io/sprites/characters/grimReaper/imperial/attack/3.png"
+            },
+            {
+              "enabled": true,
+              "id": "7d671634-ca27-4a23-adff-1f693f403aff",
+              "name": "https://cdn.eu.evoworld.io/sprites/characters/grimReaper/black/attack/4.png",
+              "value": "https://cdn.eu.evoworld.io/sprites/characters/grimReaper/imperial/attack/4.png"
+            },
+            {
+              "enabled": true,
+              "id": "7eeee09e-f077-409e-a91f-87ba3c75f446",
+              "name": "https://cdn.eu.evoworld.io/sprites/characters/grimReaper/black/attack/5.png",
+              "value": "https://cdn.eu.evoworld.io/sprites/characters/grimReaper/imperial/attack/5.png"
+            },
+            {
+              "enabled": true,
+              "id": "b35c53b5-4157-42ea-a14f-bf49d300b455",
+              "name": "https://cdn.eu.evoworld.io/sprites/characters/grimReaper/black/attack/6.png",
+              "value": "https://cdn.eu.evoworld.io/sprites/characters/grimReaper/imperial/attack/6.png"
+            },
+            {
+              "enabled": true,
+              "id": "c7de7d6e-96f8-445c-9882-a9499bb8671b",
+              "name": "https://cdn.eu.evoworld.io/sprites/characters/grimReaper/black/attack/7.png",
+              "value": "https://cdn.eu.evoworld.io/sprites/characters/grimReaper/imperial/attack/7.png"
+            },
+            {
+              "enabled": true,
+              "id": "5470921c-91a2-4b9e-9ba3-bf04ca478a38",
+              "name": "https://cdn.eu.evoworld.io/sprites/characters/grimReaper/black/attack/8.png",
+              "value": "https://cdn.eu.evoworld.io/sprites/characters/grimReaper/imperial/attack/8.png"
+            },
+            {
+              "enabled": true,
+              "id": "d56f2696-6c7b-4f7b-a64f-d827393e116a",
+              "name": "https://cdn.eu.evoworld.io/sprites/characters/pumpkinGhost/standard/attack/1.png",
+              "value": "https://cdn.eu.evoworld.io/sprites/characters/pumpkinGhost/nightmare/attack/1.png"
+            },
+            {
+              "enabled": true,
+              "id": "43961a37-8cc6-4895-838f-90a357ee2912",
+              "name": "https://cdn.eu.evoworld.io/sprites/characters/pumpkinGhost/standard/attack/2.png",
+              "value": "https://cdn.eu.evoworld.io/sprites/characters/pumpkinGhost/nightmare/attack/2.png"
+            },
+            {
+              "enabled": true,
+              "id": "8d892c01-0068-474a-ac13-53b4e9256f14",
+              "name": "https://cdn.eu.evoworld.io/sprites/characters/pumpkinGhost/standard/attack/3.png",
+              "value": "https://cdn.eu.evoworld.io/sprites/characters/pumpkinGhost/nightmare/attack/3.png"
+            },
+            {
+              "enabled": true,
+              "id": "c4529a87-6f1c-4a1d-b2c8-88ec3ffe9881",
+              "name": "https://cdn.eu.evoworld.io/sprites/characters/pumpkinGhost/standard/attack/4.png",
+              "value": "https://cdn.eu.evoworld.io/sprites/characters/pumpkinGhost/nightmare/attack/4.png"
+            },
+            {
+              "enabled": true,
+              "id": "d87a8be3-d15a-4567-8a50-f4cf43705fde",
+              "name": "https://cdn.eu.evoworld.io/sprites/characters/pumpkinGhost/standard/attack/5.png",
+              "value": "https://cdn.eu.evoworld.io/sprites/characters/pumpkinGhost/nightmare/attack/5.png"
+            },
+            {
+              "enabled": true,
+              "id": "f7d726c7-b239-4dbd-b4cf-1307f3292226",
+              "name": "https://cdn.eu.evoworld.io/sprites/characters/pumpkinGhost/standard/flying/1.png",
+              "value": "https://cdn.eu.evoworld.io/sprites/characters/pumpkinGhost/nightmare/flying/1.png"
+            },
+            {
+              "enabled": true,
+              "id": "edbe1c07-bf2f-4b3b-9e06-b368756b0070",
+              "name": "https://cdn.eu.evoworld.io/sprites/characters/pumpkinGhost/standard/flying/2.png",
+              "value": "https://cdn.eu.evoworld.io/sprites/characters/pumpkinGhost/nightmare/flying/2.png"
+            },
+            {
+              "enabled": true,
+              "id": "9016ff0a-b05f-4f09-a0a9-aab52c78a501",
+              "name": "https://cdn.eu.evoworld.io/sprites/characters/pumpkinGhost/standard/flying/3.png",
+              "value": "https://cdn.eu.evoworld.io/sprites/characters/pumpkinGhost/nightmare/flying/3.png"
+            },
+            {
+              "enabled": true,
+              "id": "e5142b0a-4d1a-4cf8-9392-7253f0998afb",
+              "name": "https://cdn.eu.evoworld.io/sprites/characters/pumpkinGhost/standard/flying/4.png",
+              "value": "https://cdn.eu.evoworld.io/sprites/characters/pumpkinGhost/nightmare/flying/4.png"
+            },
+            {
+              "enabled": true,
+              "id": "333cde6e-828f-422e-8367-c8582cd4f844",
+              "name": "https://cdn.eu.evoworld.io/sprites/characters/pumpkinGhost/standard/flying/5.png",
+              "value": "https://cdn.eu.evoworld.io/sprites/characters/pumpkinGhost/nightmare/flying/5.png"
+            },
+            {
+              "enabled": true,
+              "id": "6f6d7246-7e0f-46ba-9662-1cf9e7dc8dba",
+              "name": "https://cdn.eu.evoworld.io/sprites/characters/pumpkinGhost/standard/flying/6.png",
+              "value": "https://cdn.eu.evoworld.io/sprites/characters/pumpkinGhost/nightmare/flying/6.png"
+            },
+            {
+              "enabled": true,
+              "id": "0bf03e01-7138-4b2f-af4b-734c483dd6f2",
+              "name": "https://cdn.eu.evoworld.io/sprites/characters/pumpkinGhost/standard/flying/7.png",
+              "value": "https://cdn.eu.evoworld.io/sprites/characters/pumpkinGhost/nightmare/flying/7.png"
+            },
+            {
+              "enabled": true,
+              "id": "77424c10-7c23-4634-9c32-145ad737d2d2",
+              "name": "https://cdn.eu.evoworld.io/sprites/characters/pumpkinGhost/standard/flying/8.png",
+              "value": "https://cdn.eu.evoworld.io/sprites/characters/pumpkinGhost/nightmare/flying/8.png"
+            },
+            {
+              "enabled": true,
+              "id": "88c97db5-e9e8-414d-a050-0247c5afb819",
+              "name": "https://cdn.eu.evoworld.io/sprites/characters/pumpkinGhost/standard/flying/9.png",
+              "value": "https://cdn.eu.evoworld.io/sprites/characters/pumpkinGhost/nightmare/flying/9.png"
+            },
+            {
+              "enabled": true,
+              "id": "76c652a2-bacb-47e0-8325-4ed3cc79f886",
+              "name": "https://cdn.eu.evoworld.io/sprites/food/stone.png",
+              "value": "https://raw.githubusercontent.com/caruntumarina4-boop/Evoblox/main/FOOD/asdada.png"
+            },
+            {
+              "enabled": true,
+              "id": "f388e4f0-9eca-4418-af2d-8c5e68a8adc8",
+              "name": "https://cdn.eu.evoworld.io/sprites/food/meat.png?v=2",
+              "value": "https://raw.githubusercontent.com/caruntumarina4-boop/Evoblox/main/FOOD/gsnikcbjalsfl.png"
+            },
+            {
+              "enabled": true,
+              "id": "de6170fc-17d7-4587-96d3-bdc76bb5bdd3",
+              "name": "https://cdn.eu.evoworld.io/sprites/food/deadFish.png?v=2",
+              "value": "https://raw.githubusercontent.com/caruntumarina4-boop/Evoblox/main/FOOD/dadada.png"
+            },
+            {
+              "enabled": true,
+              "id": "156f44ca-4999-4a8b-8ff1-c9f05a24ffd8",
+              "name": "https://cdn.eu.evoworld.io/sprites/food/cherry.png",
+              "value": "https://raw.githubusercontent.com/caruntumarina4-boop/Evoblox/main/FOOD/d32234234242.png"
+            },
+            {
+              "enabled": true,
+              "id": "7cf77046-abfa-4c88-aeec-80a28cdd6586",
+              "name": "https://cdn.eu.evoworld.io/sprites/food/bread.png?v=2",
+              "value": "https://raw.githubusercontent.com/caruntumarina4-boop/Evoblox/main/FOOD/adadsasda.png"
+            },
+            {
+              "enabled": true,
+              "id": "773554ad-5b9e-41d8-9da3-ccadd2daa4e6",
+              "name": "https://cdn.eu.evoworld.io/sprites/clouds/cloud1.png",
+              "value": "https://raw.githubusercontent.com/caruntumarina4-boop/Evoblox/main/cloud1.png/2b55ed09-e851-454d-a5d3-fea934cc778e.png"
+            },
+            {
+              "enabled": true,
+              "id": "92221e24-b5c3-493c-a4ef-573ece7e74f1",
+              "name": "https://cdn.eu.evoworld.io/sprites/clouds/cloud2.png",
+              "value": "https://raw.githubusercontent.com/caruntumarina4-boop/Evoblox/main/cloud1.png/2b55ed09-e851-454d-a5d3-fea934cc778e.png"
+            },
+            {
+              "enabled": true,
+              "id": "ec0b3a64-5f72-46ed-9efd-c1a26742bf4d",
+              "name": "https://cdn.eu.evoworld.io/sprites/clouds/cloud3.png",
+              "value": "https://raw.githubusercontent.com/caruntumarina4-boop/Evoblox/main/cloud1.png/2b55ed09-e851-454d-a5d3-fea934cc778e.png"
+            },
+            {
+              "enabled": true,
+              "id": "43bd95df-702c-4574-8d24-fa0094a4bda9",
+              "name": "https://cdn.eu.evoworld.io/sprites/clouds/cloud4.png",
+              "value": "https://raw.githubusercontent.com/caruntumarina4-boop/Evoblox/main/cloud1.png/2b55ed09-e851-454d-a5d3-fea934cc778e.png"
+            },
+            {
+              "enabled": true,
+              "id": "49d1a3f5-9317-42cc-b40a-b2db5f6a3e62",
+              "name": "https://cdn.eu.evoworld.io/sprites/background/arena.png",
+              "value": "https://raw.githubusercontent.com/caruntumarina4-boop/Evoblox/main/boat/edadadadad.png"
+            },
+            {
+              "enabled": true,
+              "id": "c9ea9799-79ff-4560-8ea0-ec447b8de00f",
+              "name": "https://cdn.eu.evoworld.io/sprites/background/background_ice.png",
+              "value": "https://raw.githubusercontent.com/caruntumarina4-boop/Evoblox/main/ice%20fundal/ce5c894c-f3d9-49a3-82b8-12a526449213.png"
+            },
+            {
+              "enabled": true,
+              "id": "aebb9003-242c-4889-b5af-3a2baf0690c2",
+              "name": "https://cdn.eu.evoworld.io/sprites/background/background_jungle_1.png",
+              "value": "https://raw.githubusercontent.com/caruntumarina4-boop/Evoblox/main/jungli%20fundal/833ca433-37df-4b98-9ca8-56361738103a.png"
+            },
+            {
+              "enabled": true,
+              "id": "b242fd9a-a0a8-42b0-be69-1fa578a7dbda",
+              "name": "https://cdn.eu.evoworld.io/sprites/background/background_jungle_2.png",
+              "value": "https://raw.githubusercontent.com/caruntumarina4-boop/Evoblox/main/jungli%20fundal/b0a00021-714d-4a0c-a414-c5733c3554cd.png"
+            },
+            {
+              "enabled": true,
+              "id": "af33f046-67c6-4304-97f1-83c4d913c73f",
+              "name": "https://cdn.eu.evoworld.io/sprites/background/background_jungle_3.png",
+              "value": "https://raw.githubusercontent.com/caruntumarina4-boop/Evoblox/main/jungli%20fundal/acfe21f0-c821-4bad-a5dc-aecd97c49a14.png"
+            },
+            {
+              "enabled": true,
+              "id": "6a6bfb5f-4ca1-4142-96ff-f74fd86dc6db",
+              "name": "https://cdn.eu.evoworld.io/sprites/background/dino_bones.png",
+              "value": "https://raw.githubusercontent.com/caruntumarina4-boop/Evoblox/main/4126f541-5f3b-4683-924f-9515894c3d20.png"
+            },
+            {
+              "enabled": true,
+              "id": "8babadb7-1e2d-4037-8ac7-d13233077e9a",
+              "name": "https://cdn.eu.evoworld.io/sprites/background/iced_cave_bg.png",
+              "value": "https://raw.githubusercontent.com/caruntumarina4-boop/Evoblox/main/ice%20fundal/wwewe444444444.png"
+            },
+            {
+              "enabled": true,
+              "id": "8c9ac2e5-45be-41a8-96b6-f221b4b1572e",
+              "name": "https://cdn.eu.evoworld.io/sprites/background/thorn_branch_2.png",
+              "value": "https://raw.githubusercontent.com/caruntumarina4-boop/Evoblox/main/17f50202-ecbd-4552-a7c6-bd3b6313b5bf.png"
+            },
+            {
+              "enabled": true,
+              "id": "0126fe54-9290-4035-8959-afa29a0dfbfe",
+              "name": "https://cdn.eu.evoworld.io/sprites/background/thorn_branch_3.png",
+              "value": "https://raw.githubusercontent.com/caruntumarina4-boop/Evoblox/main/089fc982-9cf9-476d-a874-7aa688c234ae.png"
+            },
+            {
+              "enabled": true,
+              "id": "243a9cec-5029-42ff-b667-1f04ebedd7a3",
+              "name": "https://cdn.eu.evoworld.io/sprites/tiles/dirt_grass1.png",
+              "value": "https://raw.githubusercontent.com/caruntumarina4-boop/Evoblox/main/dirt_grass/sfsdfs.jpg"
+            },
+            {
+              "enabled": true,
+              "id": "ddf58509-32b9-4c8e-988b-7f84b45b2357",
+              "name": "https://cdn.eu.evoworld.io/sprites/tiles/dirt_grass2.png",
+              "value": "https://raw.githubusercontent.com/caruntumarina4-boop/Evoblox/main/dirt_grass/sfsdfs.jpg"
+            },
+            {
+              "enabled": true,
+              "id": "9d77b76b-c5bc-4f49-9862-649b98db262d",
+              "name": "https://cdn.eu.evoworld.io/sprites/tiles/dirt_grass3.png",
+              "value": "https://raw.githubusercontent.com/caruntumarina4-boop/Evoblox/main/dirt_grass/sfsdfs.jpg"
+            },
+            {
+              "enabled": true,
+              "id": "19966e7f-f4c9-4803-ab82-9c6e1870278f",
+              "name": "https://cdn.eu.evoworld.io/sprites/tiles/dirt_snow2.png",
+              "value": "https://raw.githubusercontent.com/caruntumarina4-boop/Evoblox/main/dirt_grass/snow.jpg"
+            },
+            {
+              "enabled": true,
+              "id": "cda1f6e0-4317-4ece-9b91-234da41414b7",
+              "name": "https://cdn.eu.evoworld.io/sprites/tiles/dirt_snow1.png",
+              "value": "https://raw.githubusercontent.com/caruntumarina4-boop/Evoblox/main/dirt_grass/snow.jpg"
+            },
+            {
+              "enabled": true,
+              "id": "71503976-1201-4837-ae61-54d74266eaa0",
+              "name": "https://cdn.eu.evoworld.io/sprites/tiles/dirt_top4.png",
+              "value": "https://raw.githubusercontent.com/caruntumarina4-boop/Evoblox/main/dirt_grass/earaw.jpg"
+            },
+            {
+              "enabled": true,
+              "id": "a470ad6b-244f-4569-84c0-d0651c7dd99b",
+              "name": "https://cdn.eu.evoworld.io/sprites/tiles/dirt_top3.png",
+              "value": "https://raw.githubusercontent.com/caruntumarina4-boop/Evoblox/main/dirt_grass/earaw.jpg"
+            },
+            {
+              "enabled": true,
+              "id": "109e18ed-8c25-4c9e-b89b-f5f5f704442f",
+              "name": "https://cdn.eu.evoworld.io/sprites/tiles/dirt_top2.png",
+              "value": "https://raw.githubusercontent.com/caruntumarina4-boop/Evoblox/main/dirt_grass/earaw.jpg"
+            },
+            {
+              "enabled": true,
+              "id": "58a0e173-477b-4344-abc6-3430bf961c75",
+              "name": "https://cdn.eu.evoworld.io/sprites/tiles/dirt_top1.png",
+              "value": "https://raw.githubusercontent.com/caruntumarina4-boop/Evoblox/main/dirt_grass/earaw.jpg"
+            },
+            {
+              "enabled": true,
+              "id": "2d42764e-da5f-49a3-a8c8-e7677169f65d",
+              "name": "https://cdn.eu.evoworld.io/sprites/tiles/greystone.png",
+              "value": "https://raw.githubusercontent.com/caruntumarina4-boop/Evoblox/main/dirt_grass/gdgdgdgfg.png"
+            },
+            {
+              "enabled": true,
+              "id": "ff4d42a6-e086-49d7-b256-1e15aaa1ed5f",
+              "name": "https://cdn.eu.evoworld.io/sprites/tiles/greystone_sand.png",
+              "value": "https://raw.githubusercontent.com/caruntumarina4-boop/Evoblox/main/dirt_grass/gdgdgdgfg.png"
+            },
+            {
+              "enabled": true,
+              "id": "773fa209-cff8-4040-93bf-41bac4fda315",
+              "name": "https://cdn.eu.evoworld.io/sprites/tiles/iceBlock.png",
+              "value": "https://raw.githubusercontent.com/caruntumarina4-boop/Evoblox/main/dirt_grass/tyhjk.jpg"
+            },
+            {
+              "enabled": true,
+              "id": "6deb7f54-8ff6-44cc-897d-6327c4501044",
+              "name": "https://cdn.eu.evoworld.io/sprites/tiles/jungleBottom.png",
+              "value": "https://raw.githubusercontent.com/caruntumarina4-boop/Evoblox/main/dirt_grass/fedgdgd.jpg"
+            },
+            {
+              "enabled": true,
+              "id": "7ea6ad3f-038b-4819-ad58-993d364de6b1",
+              "name": "https://cdn.eu.evoworld.io/sprites/tiles/jungleTop.png",
+              "value": "https://raw.githubusercontent.com/caruntumarina4-boop/Evoblox/main/dirt_grass/dadsdf.png"
+            },
+            {
+              "enabled": true,
+              "id": "4a03f7cc-a446-499e-a58e-b6949c3618ec",
+              "name": "https://cdn.eu.evoworld.io/sprites/tiles/lava.png",
+              "value": "https://raw.githubusercontent.com/caruntumarina4-boop/Evoblox/main/dirt_grass/lava.jpg"
+            },
+            {
+              "enabled": true,
+              "id": "791da546-fb31-4284-8c4a-9ae34c8a375d",
+              "name": "https://cdn.eu.evoworld.io/sprites/tiles/sand.png",
+              "value": "https://raw.githubusercontent.com/caruntumarina4-boop/Evoblox/main/dirt_grass/sand.jpg"
+            },
+            {
+              "enabled": true,
+              "id": "4f7419c4-d3c5-4f2b-be41-400928e64b60",
+              "name": "https://cdn.eu.evoworld.io/sprites/tiles/cosmic_plant.png",
+              "value": "https://raw.githubusercontent.com/caruntumarina4-boop/Evoblox/main/4892df7a-00c5-43f1-bb10-67c5e960e27a.png"
+            },
+            {
+              "enabled": true,
+              "id": "8dc5abf8-eab2-49d1-952b-8dedc2f28bb0",
+              "name": "https://cdn.eu.evoworld.io/sprites/tiles/brick_grey.png",
+              "value": "https://raw.githubusercontent.com/caruntumarina4-boop/Evoblox/main/boat/dadadadew333333333.jpg"
+            },
+            {
+              "enabled": true,
+              "id": "50836c54-74fe-48e4-962e-d380881326d8",
+              "name": "https://cdn.eu.evoworld.io/sprites/tiles/boat_sail.png",
+              "value": "https://raw.githubusercontent.com/caruntumarina4-boop/Evoblox/main/boat/dadasda.png"
+            },
+            {
+              "enabled": true,
+              "id": "a4d1740c-8d96-4e80-9b98-ff32504b607e",
+              "name": "https://cdn.eu.evoworld.io/sprites/tiles/boat_porthole.png",
+              "value": "https://raw.githubusercontent.com/caruntumarina4-boop/Evoblox/main/boat/dwdadada.png"
+            },
+            {
+              "enabled": true,
+              "id": "5b0f2ec2-c0cb-478c-8cfe-3d8fc0be4f00",
+              "name": "https://cdn.eu.evoworld.io/sprites/tiles/boat_cannon.png",
+              "value": "https://raw.githubusercontent.com/caruntumarina4-boop/Evoblox/main/boat/ffffdsd.png"
+            },
+            {
+              "enabled": true,
+              "id": "20a23c21-5f2e-4515-b2db-280590b34dd7",
+              "name": "https://cdn.eu.evoworld.io/sprites/tiles/flowers/flower_yellow.png",
+              "value": "https://raw.githubusercontent.com/caruntumarina4-boop/Evoblox/main/boat/sfsfsfsf.png"
+            },
+            {
+              "enabled": true,
+              "id": "ff6113f6-ac81-4bd5-bbba-78b6b23e8208",
+              "name": "https://cdn.eu.evoworld.io/sprites/tiles/flowers/flower_white.png",
+              "value": "https://raw.githubusercontent.com/caruntumarina4-boop/Evoblox/main/boat/sfsfsfsf.png"
+            },
+            {
+              "enabled": true,
+              "id": "594dcba0-7f37-4f12-8a81-1241193e6f48",
+              "name": "https://cdn.eu.evoworld.io/sprites/tiles/flowers/flower_red.png",
+              "value": "https://raw.githubusercontent.com/caruntumarina4-boop/Evoblox/main/boat/sfsfsfsf.png"
+            },
+            {
+              "enabled": true,
+              "id": "2dd03ef5-2139-42e2-a15c-de937bbba1cc",
+              "name": "https://cdn.eu.evoworld.io/sprites/tiles/flowers/flower_purple.png",
+              "value": "https://raw.githubusercontent.com/caruntumarina4-boop/Evoblox/main/boat/sfsfsfsf.png"
+            },
+            {
+              "enabled": true,
+              "id": "ee411acf-1008-4474-80cc-24679c508801",
+              "name": "https://cdn.eu.evoworld.io/sprites/tiles/flowers/flower_pink.png",
+              "value": "https://raw.githubusercontent.com/caruntumarina4-boop/Evoblox/main/boat/sfsfsfsf.png"
+            },
+            {
+              "enabled": true,
+              "id": "7039d829-d230-4ede-9c77-2403fed94747",
+              "name": "https://cdn.eu.evoworld.io/sprites/bushes/bush_1_bright_green.png",
+              "value": "https://raw.githubusercontent.com/caruntumarina4-boop/Evoblox/main/httpscdn.eu.evoworld.iospritesbushe/wwwwwwwww232323.png"
+            },
+            {
+              "enabled": true,
+              "id": "788c1e48-08f6-4d62-aea1-c5eaf4ff48b6",
+              "name": "https://cdn.eu.evoworld.io/sprites/bushes/strawberry_bush.png",
+              "value": "https://raw.githubusercontent.com/caruntumarina4-boop/Evoblox/main/httpscdn.eu.evoworld.iospritesbushe/weqweqweqwe.png"
+            },
+            {
+              "enabled": true,
+              "id": "a35b426e-d12b-4d5e-9d97-66c70476d577",
+              "name": "https://cdn.eu.evoworld.io/sprites/tiles/dirt9.png",
+              "value": "https://raw.githubusercontent.com/caruntumarina4-boop/Evoblox/main/dirt_grass/wwwww.png"
+            },
+            {
+              "enabled": true,
+              "id": "0ea178f4-a421-4b85-9cdd-9113641d6db9",
+              "name": "https://cdn.eu.evoworld.io/sprites/tiles/dirt8.png",
+              "value": "https://raw.githubusercontent.com/caruntumarina4-boop/Evoblox/main/dirt_grass/wwwww.png"
+            },
+            {
+              "enabled": true,
+              "id": "28bb5ce1-6116-41cf-b85c-1e3b1da3474f",
+              "name": "https://cdn.eu.evoworld.io/sprites/tiles/dirt7.png",
+              "value": "https://raw.githubusercontent.com/caruntumarina4-boop/Evoblox/main/dirt_grass/wwwww.png"
+            },
+            {
+              "enabled": true,
+              "id": "9a841ec8-fc49-4b7c-8a23-646e624ff3c7",
+              "name": "https://cdn.eu.evoworld.io/sprites/tiles/dirt6.png",
+              "value": "https://raw.githubusercontent.com/caruntumarina4-boop/Evoblox/main/dirt_grass/wwwww.png"
+            },
+            {
+              "enabled": true,
+              "id": "8c2880e5-9d8b-41bf-b09d-f662d953bd0a",
+              "name": "https://cdn.eu.evoworld.io/sprites/tiles/dirt5.png",
+              "value": "https://raw.githubusercontent.com/caruntumarina4-boop/Evoblox/main/dirt_grass/wwwww.png"
+            },
+            {
+              "enabled": true,
+              "id": "5825d54c-aa70-4285-8d02-b13fda1f76f1",
+              "name": "https://cdn.eu.evoworld.io/sprites/tiles/dirt4.png",
+              "value": "https://raw.githubusercontent.com/caruntumarina4-boop/Evoblox/main/dirt_grass/wwwww.png"
+            },
+            {
+              "enabled": true,
+              "id": "4a6e512f-8fc8-49e8-92bb-039ea2d55d24",
+              "name": "https://cdn.eu.evoworld.io/sprites/tiles/dirt3.png",
+              "value": "https://raw.githubusercontent.com/caruntumarina4-boop/Evoblox/main/dirt_grass/wwwww.png"
+            },
+            {
+              "enabled": true,
+              "id": "e8f8c20e-72b5-4aa4-9dde-5dad3bc646e2",
+              "name": "https://cdn.eu.evoworld.io/sprites/tiles/dirt2.png",
+              "value": "https://raw.githubusercontent.com/caruntumarina4-boop/Evoblox/main/dirt_grass/wwwww.png"
+            },
+            {
+              "enabled": true,
+              "id": "9e0fb0a4-49ea-47fc-8e84-9cf82f5b63a9",
+              "name": "https://cdn.eu.evoworld.io/sprites/tiles/dirt1.png",
+              "value": "https://raw.githubusercontent.com/caruntumarina4-boop/Evoblox/main/dirt_grass/wwwww.png"
+            },
+            {
+              "enabled": true,
+              "id": "901cdc68-4b61-41c2-a9f4-f4b386654853",
+              "name": "https://cdn.eu.evoworld.io/sprites/tiles/brick_pyramid.png",
+              "value": "https://raw.githubusercontent.com/caruntumarina4-boop/Evoblox/main/boat/images.jpg"
+            },
+            {
+              "enabled": true,
+              "id": "d0749f98-ef9a-4d69-bc6a-4a94660d988c",
+              "name": "https://cdn.eu.evoworld.io/sprites/background/background_grey.png?v=2",
+              "value": "https://raw.githubusercontent.com/caruntumarina4-boop/Evoblox/main/cosmos/53966a95-8ad0-47f2-a286-828c967df7b1.png"
+            },
+            {
+              "enabled": true,
+              "id": "6a3e1b8b-9dec-4dfe-ad54-7af5e696aeb3",
+              "name": "https://cdn.eu.evoworld.io/sprites/background/background_lightblue.png",
+              "value": "https://raw.githubusercontent.com/caruntumarina4-boop/Evoblox/main/back/7626b78e-1c31-48bb-ab19-6facce9dd618.png"
+            },
+            {
+              "enabled": true,
+              "id": "44849628-6f27-4a2a-adc4-b22f26c4aee8",
+              "name": "https://cdn.eu.evoworld.io/sprites/background/background_lightblue_to_purple.jpg",
+              "value": "https://raw.githubusercontent.com/caruntumarina4-boop/Evoblox/main/back/ee0d5a0d-b0f9-4b2a-a37f-8f17ec7a014c.jpg"
+            },
+            {
+              "enabled": true,
+              "id": "1f6c0463-afdd-4d1a-b3ec-09792d33e5cf",
+              "name": "https://cdn.eu.evoworld.io/sprites/background/background_pyramid.png",
+              "value": "https://raw.githubusercontent.com/caruntumarina4-boop/Evoblox/main/fudalpyramid.jpg"
+            },
+            {
+              "enabled": true,
+              "id": "eba0cfba-e049-474c-b68f-6984efac6c2d",
+              "name": "https://cdn.eu.evoworld.io/sprites/background/background_space_1.png",
+              "value": "https://raw.githubusercontent.com/caruntumarina4-boop/Evoblox/main/fundal%20cosmic/866cfe03-3955-493b-87f1-38e7f10a0bcb.png"
+            },
+            {
+              "enabled": true,
+              "id": "b24bba21-b48d-48e0-9e60-923e1845bc47",
+              "name": "https://cdn.eu.evoworld.io/sprites/background/background_space_2.png",
+              "value": "https://raw.githubusercontent.com/caruntumarina4-boop/Evoblox/main/fundal%20cosmic/0d5cc2e9-7f24-48af-85db-a286764c4caf.png"
+            },
+            {
+              "enabled": true,
+              "id": "8a1ebdec-91c0-42f9-a458-2e326abd8eef",
+              "name": "https://cdn.eu.evoworld.io/sprites/background/background_space_3.png",
+              "value": "https://raw.githubusercontent.com/caruntumarina4-boop/Evoblox/main/fundal%20cosmic/83a95181-b0fd-4f8c-914c-b0de79233e29.png"
+            },
+            {
+              "enabled": true,
+              "id": "f3c935fb-ecd5-48c3-be73-b9954824611e",
+              "name": "https://cdn.eu.evoworld.io/sprites/background/background_space_4.png",
+              "value": "https://raw.githubusercontent.com/caruntumarina4-boop/Evoblox/main/fundal%20cosmic/138da9df-facd-4b65-a032-22c286602592.png"
+            },
+            {
+              "enabled": true,
+              "id": "a0f3f4d4-ebf0-45a5-8c3b-c7104ca1d93c",
+              "name": "https://cdn.eu.evoworld.io/sprites/background/volcano_2.png",
+              "value": "https://raw.githubusercontent.com/caruntumarina4-boop/Evoblox/main/vulcan2.png"
+            },
+            {
+              "enabled": true,
+              "id": "86e7a909-3376-4c2a-8a65-af41dd66c9de",
+              "name": "https://cdn.eu.evoworld.io/sprites/background/volcano_1.png",
+              "value": "https://raw.githubusercontent.com/caruntumarina4-boop/Evoblox/main/vulcan2.png"
+            },
+            {
+              "enabled": true,
+              "id": "a6233b6e-2422-4818-b6ef-61d6ceaf418b",
+              "name": "https://cdn.eu.evoworld.io/sprites/food/starFruit.png?v=2",
+              "value": "https://raw.githubusercontent.com/caruntumarina4-boop/Evoblox/main/banana.png"
+            },
+            {
+              "enabled": true,
+              "id": "13e74ecc-8651-42d9-9e03-e82a5a91d1e5",
+              "name": "https://cdn.eu.evoworld.io/sprites/food/seed.png?v=2",
+              "value": "https://raw.githubusercontent.com/caruntumarina4-boop/Evoblox/main/5e097960-ef63-4539-80e7-48c7c493f018.png"
+            },
+            {
+              "enabled": true,
+              "id": "92b4e714-e45e-4c15-92ac-65a0e1907f4c",
+              "name": "https://cdn.eu.evoworld.io/sprites/food/ladybug.png?v=2",
+              "value": "https://raw.githubusercontent.com/caruntumarina4-boop/Evoblox/main/ladybug..png"
+            },
+            {
+              "enabled": true,
+              "id": "7fa4d701-f592-4efe-9810-cb4266a012ee",
+              "name": "https://cdn.eu.evoworld.io/sprites/food/egg_red.png",
+              "value": "https://raw.githubusercontent.com/caruntumarina4-boop/Evoblox/main/e23333333342424242.png"
+            },
+            {
+              "enabled": true,
+              "id": "6f16c409-c4be-4b15-972e-3efb84c983f8",
+              "name": "https://cdn.eu.evoworld.io/sprites/food/egg_cosmic.png",
+              "value": "https://raw.githubusercontent.com/caruntumarina4-boop/Evoblox/main/cosmicegg.png"
+            },
+            {
+              "enabled": true,
+              "id": "3e5e01b4-b88a-4852-9906-09f3b4fdb83b",
+              "name": "https://cdn.eu.evoworld.io/sprites/food/egg.png",
+              "value": "https://raw.githubusercontent.com/caruntumarina4-boop/Evoblox/main/egg.png"
+            },
+            {
+              "enabled": true,
+              "id": "a00d7d22-ead8-415c-8b8e-a38d4c2d6a7f",
+              "name": "https://cdn.eu.evoworld.io/sprites/food/strawberry.png?v=2",
+              "value": "https://raw.githubusercontent.com/caruntumarina4-boop/Evoblox/main/strawberry.png"
+            },
+            {
+              "enabled": true,
+              "id": "2e7a4ab9-8f65-4cef-bbd5-f95cec54d9f3",
+              "name": "https://cdn.eu.evoworld.io/sprites/food/currant.png",
+              "value": "https://raw.githubusercontent.com/caruntumarina4-boop/Evoblox/main/currant.png"
+            },
+            {
+              "enabled": true,
+              "id": "696265ef-ec74-4705-8d40-492138132369",
+              "name": "https://cdn.eu.evoworld.io/sprites/background/background_graveyard_1.png",
+              "value": "https://raw.githubusercontent.com/caruntumarina4-boop/Evoblox/main/mortosiune/bc787c94-b450-4268-9dd6-6c771995f65d%20(1).png"
+            },
+            {
+              "enabled": true,
+              "id": "3c3eaca2-e0c5-432c-941d-b9dd872c3948",
+              "name": "https://cdn.eu.evoworld.io/sprites/background/background_graveyard_2.png",
+              "value": "https://raw.githubusercontent.com/caruntumarina4-boop/Evoblox/main/mortosiune/cfd1cfde-c1f6-42a0-8e20-3985e28689eb.png"
+            },
+            {
+              "enabled": true,
+              "id": "420a015b-b2e7-4beb-b66b-90e59c0d26fe",
+              "name": "https://cdn.eu.evoworld.io/sprites/background/background_graveyard_3.png",
+              "value": "https://raw.githubusercontent.com/caruntumarina4-boop/Evoblox/main/mortosiune/07eb5608-893d-4e94-9740-2dee1817945a%20(1).png"
+            },
+            {
+              "enabled": true,
+              "id": "4fc75f05-dbaa-479e-98fd-d4d99dc63167",
+              "name": "https://cdn.eu.evoworld.io/sprites/background/background_graveyard_bottom.png",
+              "value": "https://raw.githubusercontent.com/caruntumarina4-boop/Evoblox/main/mortosiune/fcb66f6b-a120-4d38-8e06-ef5977df5eab.png"
+            },
+            {
+              "enabled": true,
+              "id": "fd0a2164-1263-46fc-8708-4201696184b3",
+              "name": "https://cdn.eu.evoworld.io/sprites/background/background_graveyard_left.png",
+              "value": "https://raw.githubusercontent.com/caruntumarina4-boop/Evoblox/main/mortosiune/10cc6c1b-7d03-4e44-af07-e4cc2faf081e.png"
+            },
+            {
+              "enabled": true,
+              "id": "4b3afc16-c934-423f-aab0-182c17aac035",
+              "name": "https://cdn.eu.evoworld.io/sprites/background/background_graveyard_top.png",
+              "value": "https://raw.githubusercontent.com/caruntumarina4-boop/Evoblox/main/mortosiune/e9015384-4cf4-4d0d-a849-08962a78f9c7.png"
+            },
+            {
+              "enabled": true,
+              "id": "7eaab306-d208-425d-9339-92ea818a0f75",
+              "name": "https://cdn.eu.evoworld.io/sprites/background/background_graveyard_top_left.png",
+              "value": "https://raw.githubusercontent.com/caruntumarina4-boop/Evoblox/main/mortosiune/69c9514c-1096-488d-b539-43bcecb57458.png"
+            },
+            {
+              "enabled": true,
+              "id": "c4078275-2e49-49bb-862b-c40fb8124f6a",
+              "name": "https://cdn.eu.evoworld.io/sprites/background/strangeTree.png?v=2",
+              "value": "https://raw.githubusercontent.com/caruntumarina4-boop/Evoblox/main/c809a213-77e2-483d-bd29-72abce2fc389.png"
+            },
+            {
+              "enabled": true,
+              "id": "cc668512-7e6c-44d6-9236-1490671a9161",
+              "name": "https://cdn.eu.evoworld.io/images/cursor.png",
+              "value": "http://raw.githubusercontent.com/caruntumarina4-boop/Evoblox/main/cursor.png"
+            }
+          ]
+        },
+        "request": {
+          "enabled": true,
+          "rules": []
+        },
+        "response": {
+          "enabled": true,
+          "rules": []
+        }
+      }
+    }
+  ]
+}
