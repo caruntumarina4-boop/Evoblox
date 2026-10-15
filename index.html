@@ -11,6 +11,10 @@
     box-sizing: border-box;
 }
 
+:root {
+    color-scheme: dark;
+}
+
 body {
     margin: 0;
     background: #111;
@@ -43,46 +47,108 @@ h1 {
     outline: none;
 }
 
+#search:focus {
+    border-color: #777;
+}
+
+.toolbar {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-top: 12px;
+}
+
+select, .tool-button {
+    padding: 10px 12px;
+    border: 1px solid #444;
+    border-radius: 8px;
+    background: #292929;
+    color: white;
+    cursor: pointer;
+    font-size: 14px;
+}
+
 #count {
-    margin-top: 8px;
-    color: #999;
+    margin-top: 10px;
+    color: #aaa;
+    font-size: 13px;
 }
 
 main {
     padding: 20px;
 }
 
+.status {
+    margin-bottom: 18px;
+    color: #999;
+    font-size: 13px;
+}
+
 .folder {
-    margin-bottom: 30px;
+    margin-bottom: 32px;
 }
 
 .folder-title {
-    font-size: 22px;
+    display: flex;
+    align-items: center;
+    gap: 9px;
+    font-size: 21px;
     font-weight: bold;
-    margin-bottom: 12px;
-    padding-bottom: 8px;
+    margin-bottom: 14px;
+    padding-bottom: 10px;
     border-bottom: 1px solid #333;
+    overflow-wrap: anywhere;
+}
+
+.folder-icon {
+    color: #f5c451;
 }
 
 .grid {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    grid-template-columns: repeat(auto-fill, minmax(235px, 1fr));
     gap: 15px;
 }
 
 .card {
+    min-width: 0;
     background: #1b1b1b;
     border: 1px solid #333;
     border-radius: 12px;
     overflow: hidden;
+    transition: border-color .15s;
 }
 
-.card img {
-    width: 100%;
-    height: 200px;
+.card:hover {
+    border-color: #666;
+}
+
+.preview {
+    height: 180px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+    background-color: #080808;
+    background-image:
+        linear-gradient(45deg, #151515 25%, transparent 25%),
+        linear-gradient(-45deg, #151515 25%, transparent 25%),
+        linear-gradient(45deg, transparent 75%, #151515 75%),
+        linear-gradient(-45deg, transparent 75%, #151515 75%);
+    background-size: 20px 20px;
+    background-position: 0 0, 0 10px, 10px -10px, -10px 0;
+}
+
+.preview img {
     display: block;
+    width: 100%;
+    height: 100%;
     object-fit: contain;
-    background: #080808;
+}
+
+.file-icon {
+    font-size: 48px;
+    color: #bbb;
 }
 
 .info {
@@ -91,25 +157,44 @@ main {
 
 .name {
     font-weight: bold;
-    word-break: break-word;
+    overflow-wrap: anywhere;
+    line-height: 1.4;
+}
+
+.badges {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 5px;
+    margin-top: 8px;
+}
+
+.badge {
+    display: inline-block;
+    padding: 4px 7px;
+    background: #303030;
+    color: #ccc;
+    border-radius: 5px;
+    font-size: 11px;
 }
 
 .path {
-    margin-top: 6px;
+    margin-top: 8px;
     color: #888;
     font-size: 12px;
-    word-break: break-all;
+    overflow-wrap: anywhere;
+    line-height: 1.5;
 }
 
 .buttons {
     display: flex;
+    flex-wrap: wrap;
     gap: 8px;
     margin-top: 12px;
 }
 
-button,
-.open {
+button, .open {
     flex: 1;
+    min-width: 80px;
     padding: 9px;
     border: 0;
     border-radius: 7px;
@@ -117,6 +202,7 @@ button,
     text-align: center;
     text-decoration: none;
     font-weight: bold;
+    font-size: 13px;
 }
 
 button {
@@ -124,14 +210,22 @@ button {
     color: white;
 }
 
+button:hover {
+    background: #454545;
+}
+
 .open {
     background: white;
     color: black;
 }
 
-.loading {
+.open:hover {
+    background: #ddd;
+}
+
+.empty, .loading {
     text-align: center;
-    padding: 50px;
+    padding: 45px 15px;
     color: #aaa;
 }
 
@@ -140,6 +234,41 @@ button {
     border: 1px solid #700;
     padding: 20px;
     border-radius: 10px;
+    overflow-wrap: anywhere;
+}
+
+.error button {
+    margin-top: 10px;
+}
+
+.footer {
+    color: #666;
+    text-align: center;
+    padding: 25px;
+    font-size: 12px;
+}
+
+@media (max-width: 520px) {
+    header {
+        padding: 14px;
+    }
+
+    main {
+        padding: 14px;
+    }
+
+    h1 {
+        font-size: 22px;
+    }
+
+    .grid {
+        grid-template-columns: repeat(auto-fill, minmax(145px, 1fr));
+        gap: 10px;
+    }
+
+    .preview {
+        height: 135px;
+    }
 }
 </style>
 </head>
@@ -147,340 +276,556 @@ button {
 <body>
 
 <header>
-
     <h1>🍌 Evoblox Texture Library</h1>
 
     <input
         id="search"
-        type="text"
-        placeholder="Caută imagine sau folder..."
+        type="search"
+        placeholder="Caută imagine, textură, fișier sau folder..."
+        autocomplete="off"
     >
 
-    <div id="count">
-        Se încarcă imaginile...
+    <div class="toolbar">
+        <select id="typeFilter" aria-label="Filtrează tipul">
+            <option value="all">Toate tipurile</option>
+            <option value="image">Imagini și texturi</option>
+            <option value="other">Alte fișiere</option>
+        </select>
+
+        <select id="folderFilter" aria-label="Filtrează folderul">
+            <option value="all">Toate folderele</option>
+        </select>
+
+        <button class="tool-button" id="refreshButton" type="button">
+            ↻ Reîncarcă GitHub
+        </button>
     </div>
 
+    <div id="count">Se pregătește biblioteca...</div>
 </header>
 
 <main>
-
-    <div id="content" class="loading">
-        Se încarcă toate imaginile din GitHub...
+    <div id="status" class="status">
+        Se încarcă fișierele din GitHub...
     </div>
 
+    <div id="content" class="loading">
+        🍌 Se încarcă biblioteca Evoblox...
+    </div>
 </main>
 
-<script>
+<div class="footer">
+    Evoblox Texture Library · GitHub Repository
+</div>
 
+<script>
+"use strict";
+
+// REPOSITORY GITHUB
 const OWNER = "caruntumarina4-boop";
 const REPOSITORY = "Evoblox";
 const BRANCH = "main";
 
-const BASE_URL =
-    `https://raw.githubusercontent.com/${OWNER}/${REPOSITORY}/${BRANCH}`;
-
 const API_URL =
     `https://api.github.com/repos/${OWNER}/${REPOSITORY}/git/trees/${BRANCH}?recursive=1`;
 
-let allImages = [];
+const BASE_URL =
+    `https://raw.githubusercontent.com/${OWNER}/${REPOSITORY}/${BRANCH}`;
 
+const IMAGE_EXTENSIONS = new Set([
+    "png", "jpg", "jpeg", "webp", "gif", "bmp",
+    "avif", "ico", "tif", "tiff", "apng"
+]);
 
-async function loadImages() {
+const TEXT_EXTENSIONS = new Set([
+    "txt", "json", "xml", "svg", "css", "js",
+    "html", "htm", "md", "yml", "yaml", "toml",
+    "ini", "cfg", "csv", "log", "lua", "py",
+    "ts", "jsx", "tsx", "shader", "glsl", "obj",
+    "mtl", "manifest", "properties"
+]);
 
-    const content = document.getElementById("content");
-    const count = document.getElementById("count");
+const FILE_ICONS = {
+    json: "📋",
+    txt: "📄",
+    md: "📝",
+    svg: "🖼️",
+    xml: "🧩",
+    css: "🎨",
+    js: "📜",
+    lua: "🎮",
+    py: "🐍",
+    obj: "🧊",
+    mtl: "🎨",
+    zip: "🗜️",
+    rar: "🗜️",
+    pdf: "📕",
+    mp3: "🎵",
+    wav: "🎵",
+    mp4: "🎬",
+    webm: "🎬"
+};
+
+let allFiles = [];
+let loading = false;
+
+const content = document.getElementById("content");
+const count = document.getElementById("count");
+const status = document.getElementById("status");
+const search = document.getElementById("search");
+const typeFilter = document.getElementById("typeFilter");
+const folderFilter = document.getElementById("folderFilter");
+const refreshButton = document.getElementById("refreshButton");
+
+function escapeHtml(value) {
+    return String(value).replace(/[&<>"']/g, char => ({
+        "&": "&amp;",
+        "<": "&lt;",
+        ">": "&gt;",
+        '"': "&quot;",
+        "'": "&#039;"
+    })[char]);
+}
+
+function getExtension(path) {
+    const name = path.split("/").pop();
+    const dot = name.lastIndexOf(".");
+
+    return dot > 0
+        ? name.slice(dot + 1).toLowerCase()
+        : "";
+}
+
+function getFileType(path) {
+    const ext = getExtension(path);
+
+    if (IMAGE_EXTENSIONS.has(ext)) {
+        return "image";
+    }
+
+    return "other";
+}
+
+function getCategory(path) {
+    const ext = getExtension(path);
+    const name = path.split("/").pop().toLowerCase();
+
+    if (IMAGE_EXTENSIONS.has(ext)) {
+        if (
+            /texture|tex|albedo|normal|roughness|metallic|diffuse|height|bump|ao/.test(name)
+        ) {
+            return "Textură";
+        }
+
+        return "Imagine";
+    }
+
+    if (TEXT_EXTENSIONS.has(ext)) {
+        return "Document / cod";
+    }
+
+    return ext ? ext.toUpperCase() : "Fișier";
+}
+
+function getIcon(path) {
+    const ext = getExtension(path);
+
+    if (FILE_ICONS[ext]) {
+        return FILE_ICONS[ext];
+    }
+
+    if (ext === "glb" || ext === "gltf" || ext === "fbx") {
+        return "🧊";
+    }
+
+    return "📄";
+}
+
+function getFileUrl(path) {
+    return BASE_URL + "/" + path
+        .split("/")
+        .map(part => encodeURIComponent(part))
+        .join("/");
+}
+
+function getFolder(path) {
+    const parts = path.split("/");
+    parts.pop();
+
+    return parts.length ? parts.join("/") : "ROOT";
+}
+
+function formatSize(bytes) {
+    if (typeof bytes !== "number") {
+        return "";
+    }
+
+    if (bytes < 1024) {
+        return bytes + " B";
+    }
+
+    if (bytes < 1024 * 1024) {
+        return (bytes / 1024).toFixed(1) + " KB";
+    }
+
+    return (bytes / (1024 * 1024)).toFixed(2) + " MB";
+}
+
+async function loadFiles() {
+    if (loading) return;
+
+    loading = true;
+    refreshButton.disabled = true;
+    refreshButton.textContent = "Se încarcă...";
+    content.className = "loading";
+    content.textContent = "🍌 Se încarcă fișierele din GitHub...";
+    status.textContent = "Se verifică repository-ul Evoblox...";
 
     try {
-
-        const response = await fetch(API_URL);
+        const response = await fetch(API_URL, {
+            headers: {
+                "Accept": "application/vnd.github+json"
+            },
+            cache: "no-store"
+        });
 
         if (!response.ok) {
-            throw new Error("GitHub API error: " + response.status);
+            if (response.status === 404) {
+                throw new Error(
+                    "Repository-ul sau branch-ul nu a fost găsit. " +
+                    "Verifică dacă Evoblox este public și branch-ul se numește main."
+                );
+            }
+
+            if (response.status === 403 || response.status === 429) {
+                throw new Error(
+                    "GitHub a limitat temporar cererile API. " +
+                    "Așteaptă puțin și încearcă din nou."
+                );
+            }
+
+            throw new Error("GitHub API a returnat eroarea " + response.status);
         }
 
         const data = await response.json();
 
-        if (!data.tree) {
+        if (!Array.isArray(data.tree)) {
             throw new Error("GitHub nu a returnat lista fișierelor.");
         }
 
-        allImages = data.tree
+        if (data.truncated) {
+            status.textContent =
+                "Atenție: GitHub a limitat lista returnată. " +
+                "Repository-ul are foarte multe fișiere.";
+        }
+
+        allFiles = data.tree
             .filter(item => item.type === "blob")
-            .filter(item => {
+            .map(item => ({
+                name: item.path.split("/").pop(),
+                path: item.path,
+                folder: getFolder(item.path),
+                extension: getExtension(item.path),
+                type: getFileType(item.path),
+                category: getCategory(item.path),
+                size: item.size,
+                url: getFileUrl(item.path)
+            }))
+            .sort((a, b) => a.path.localeCompare(b.path));
 
-                const extension =
-                    item.path.split(".").pop().toLowerCase();
+        updateFolderOptions();
 
-                return [
-                    "png",
-                    "jpg",
-                    "jpeg",
-                    "webp",
-                    "gif",
-                    "bmp"
-                ].includes(extension);
+        status.textContent =
+            "Repository: " + OWNER + "/" + REPOSITORY +
+            " · Branch: " + BRANCH;
 
-            })
-            .map(item => {
-
-                const encodedPath = item.path
-                    .split("/")
-                    .map(part => encodeURIComponent(part))
-                    .join("/");
-
-                return {
-                    name: item.path.split("/").pop(),
-                    path: item.path,
-                    url: `${BASE_URL}/${encodedPath}`
-                };
-
-            });
-
-        renderImages(allImages);
+        renderFiles();
 
     } catch (error) {
+        content.className = "";
+        content.replaceChildren();
 
-        content.innerHTML = `
-            <div class="error">
-                <h2>Nu am putut încărca imaginile.</h2>
-                <p>${error.message}</p>
-            </div>
-        `;
+        const box = document.createElement("div");
+        box.className = "error";
 
-        count.textContent = "Eroare";
+        const heading = document.createElement("h2");
+        heading.textContent = "Nu am putut încărca biblioteca.";
+
+        const message = document.createElement("p");
+        message.textContent = error.message;
+
+        const retry = document.createElement("button");
+        retry.type = "button";
+        retry.textContent = "Încearcă din nou";
+        retry.addEventListener("click", loadFiles);
+
+        box.append(heading, message, retry);
+        content.appendChild(box);
+
+        count.textContent = "Eroare la încărcare";
+        status.textContent = "Verifică conexiunea și setările repository-ului.";
 
         console.error(error);
+    } finally {
+        loading = false;
+        refreshButton.disabled = false;
+        refreshButton.textContent = "↻ Reîncarcă GitHub";
     }
 }
 
+function updateFolderOptions() {
+    const previous = folderFilter.value;
 
-function renderImages(images) {
+    const folders = new Set(["ROOT"]);
 
-    const content = document.getElementById("content");
-    const count = document.getElementById("count");
+    allFiles.forEach(file => {
+        const parts = file.path.split("/");
 
+        // Include folderul direct și toate folderele părinte.
+        for (let i = 1; i < parts.length; i++) {
+            folders.add(parts.slice(0, i).join("/"));
+        }
+    });
+
+    folderFilter.replaceChildren();
+
+    const allOption = document.createElement("option");
+    allOption.value = "all";
+    allOption.textContent = "Toate folderele";
+    folderFilter.appendChild(allOption);
+
+    [...folders].sort((a, b) => {
+        if (a === "ROOT") return -1;
+        if (b === "ROOT") return 1;
+        return a.localeCompare(b);
+    }).forEach(folder => {
+        const option = document.createElement("option");
+        option.value = folder;
+        option.textContent = folder === "ROOT"
+            ? "📁 ROOT"
+            : "📁 " + folder;
+
+        folderFilter.appendChild(option);
+    });
+
+    if ([...folders].includes(previous) || previous === "all") {
+        folderFilter.value = previous;
+    } else {
+        folderFilter.value = "all";
+    }
+}
+
+function renderFiles() {
+    const query = search.value.trim().toLowerCase();
+    const selectedType = typeFilter.value;
+    const selectedFolder = folderFilter.value;
+
+    const filtered = allFiles.filter(file => {
+        const matchesSearch =
+            file.name.toLowerCase().includes(query) ||
+            file.path.toLowerCase().includes(query) ||
+            file.extension.toLowerCase().includes(query) ||
+            file.category.toLowerCase().includes(query);
+
+        const matchesType =
+            selectedType === "all" ||
+            file.type === selectedType;
+
+        const matchesFolder =
+            selectedFolder === "all" ||
+            (selectedFolder === "ROOT"
+                ? !file.path.includes("/")
+                : file.path.startsWith(selectedFolder + "/"));
+
+        return matchesSearch && matchesType && matchesFolder;
+    });
+
+    const imageCount = filtered.filter(file => file.type === "image").length;
+    const otherCount = filtered.length - imageCount;
+
+    count.textContent =
+        `${filtered.length} fișiere · ` +
+        `${imageCount} imagini/texturi · ${otherCount} alte fișiere`;
+
+    content.replaceChildren();
     content.className = "";
 
-    if (images.length === 0) {
+    if (filtered.length === 0) {
+        const empty = document.createElement("div");
+        empty.className = "empty";
+        empty.textContent = allFiles.length
+            ? "Nu am găsit fișiere pentru această căutare."
+            : "Repository-ul nu conține fișiere afișabile.";
 
-        content.innerHTML = `
-            <div class="loading">
-                Nu există imagini găsite.
-            </div>
-        `;
-
-        count.textContent = "0 imagini";
-
+        content.appendChild(empty);
         return;
     }
 
+    // Grupează fișierele după toate căile de folder,
+    // inclusiv subfolderele.
+    const groups = new Map();
 
-    const folders = {};
-
-
-    images.forEach(image => {
-
-        const parts = image.path.split("/");
-
-        let folder;
-
-        if (parts.length === 1) {
-            folder = "ROOT";
-        } else {
-            folder = parts[0];
+    filtered.forEach(file => {
+        if (!groups.has(file.folder)) {
+            groups.set(file.folder, []);
         }
 
-        if (!folders[folder]) {
-            folders[folder] = [];
-        }
-
-        folders[folder].push(image);
-
+        groups.get(file.folder).push(file);
     });
 
+    [...groups.keys()].sort((a, b) => {
+        if (a === "ROOT") return -1;
+        if (b === "ROOT") return 1;
+        return a.localeCompare(b);
+    }).forEach(folderName => {
+        const section = document.createElement("section");
+        section.className = "folder";
 
-    content.innerHTML = "";
+        const title = document.createElement("div");
+        title.className = "folder-title";
 
+        const icon = document.createElement("span");
+        icon.className = "folder-icon";
+        icon.textContent = "📁";
 
-    Object.keys(folders)
-        .sort()
-        .forEach(folderName => {
+        const label = document.createElement("span");
+        label.textContent =
+            folderName + " (" + groups.get(folderName).length + ")";
 
-            const folder = document.createElement("section");
+        title.append(icon, label);
 
-            folder.className = "folder";
+        const grid = document.createElement("div");
+        grid.className = "grid";
 
+        groups.get(folderName).forEach((file, index) => {
+            const card = document.createElement("article");
+            card.className = "card";
 
-            const title = document.createElement("div");
+            const preview = document.createElement("div");
+            preview.className = "preview";
 
-            title.className = "folder-title";
+            if (file.type === "image") {
+                const link = document.createElement("a");
+                link.href = file.url;
+                link.target = "_blank";
+                link.rel = "noopener noreferrer";
+                link.style.display = "block";
+                link.style.width = "100%";
+                link.style.height = "100%";
 
-            title.textContent =
-                folderName + " (" + folders[folderName].length + ")";
+                const img = document.createElement("img");
+                img.src = file.url;
+                img.alt = file.name;
+                img.loading = "lazy";
+                img.decoding = "async";
 
+                img.addEventListener("error", () => {
+                    const fallback = document.createElement("div");
+                    fallback.className = "file-icon";
+                    fallback.textContent = "🖼️";
+                    fallback.title = "Previzualizarea nu este disponibilă";
+                    preview.replaceChildren(fallback);
+                }, { once: true });
 
-            const grid = document.createElement("div");
+                link.appendChild(img);
+                preview.appendChild(link);
+            } else {
+                const iconBox = document.createElement("div");
+                iconBox.className = "file-icon";
+                iconBox.textContent = getIcon(file.path);
+                preview.appendChild(iconBox);
+            }
 
-            grid.className = "grid";
+            const info = document.createElement("div");
+            info.className = "info";
 
+            const name = document.createElement("div");
+            name.className = "name";
+            name.textContent = `${index + 1}. ${file.name}`;
 
-            folders[folderName].forEach((image, index) => {
+            const badges = document.createElement("div");
+            badges.className = "badges";
 
-                const card = document.createElement("div");
+            const categoryBadge = document.createElement("span");
+            categoryBadge.className = "badge";
+            categoryBadge.textContent = file.category;
+            badges.appendChild(categoryBadge);
 
-                card.className = "card";
+            if (file.extension) {
+                const extensionBadge = document.createElement("span");
+                extensionBadge.className = "badge";
+                extensionBadge.textContent = "." + file.extension;
+                badges.appendChild(extensionBadge);
+            }
 
+            if (typeof file.size === "number") {
+                const sizeBadge = document.createElement("span");
+                sizeBadge.className = "badge";
+                sizeBadge.textContent = formatSize(file.size);
+                badges.appendChild(sizeBadge);
+            }
 
-                card.innerHTML = `
+            const path = document.createElement("div");
+            path.className = "path";
+            path.textContent = file.path;
 
-                    <a
-                        href="${image.url}"
-                        target="_blank"
-                    >
+            const buttons = document.createElement("div");
+            buttons.className = "buttons";
 
-                        <img
-                            src="${image.url}"
-                            loading="lazy"
-                            alt="${escapeHtml(image.name)}"
-                        >
+            const open = document.createElement("a");
+            open.className = "open";
+            open.href = file.url;
+            open.target = "_blank";
+            open.rel = "noopener noreferrer";
+            open.textContent = "Open";
 
-                    </a>
+            const copy = document.createElement("button");
+            copy.type = "button";
+            copy.textContent = "Copy link";
+            copy.addEventListener("click", () => copyLink(file.url, copy));
 
+            const repoLink = document.createElement("a");
+            repoLink.className = "open";
+            repoLink.href =
+                `https://github.com/${OWNER}/${REPOSITORY}/blob/${BRANCH}/` +
+                file.path.split("/").map(encodeURIComponent).join("/");
+            repoLink.target = "_blank";
+            repoLink.rel = "noopener noreferrer";
+            repoLink.textContent = "GitHub";
 
-                    <div class="info">
-
-                        <div class="name">
-                            ${index + 1}. ${escapeHtml(image.name)}
-                        </div>
-
-
-                        <div class="path">
-                            ${escapeHtml(image.path)}
-                        </div>
-
-
-                        <div class="buttons">
-
-                            <a
-                                class="open"
-                                href="${image.url}"
-                                target="_blank"
-                            >
-                                Open
-                            </a>
-
-
-                            <button
-                                onclick="copyLink('${escapeAttribute(image.url)}', this)"
-                            >
-                                Copy link
-                            </button>
-
-                        </div>
-
-                    </div>
-
-                `;
-
-
-                grid.appendChild(card);
-
-            });
-
-
-            folder.appendChild(title);
-
-            folder.appendChild(grid);
-
-            content.appendChild(folder);
-
+            buttons.append(open, copy, repoLink);
+            info.append(name, badges, path, buttons);
+            card.append(preview, info);
+            grid.appendChild(card);
         });
 
-
-    count.textContent =
-        images.length + " imagini";
-
+        section.append(title, grid);
+        content.appendChild(section);
+    });
 }
-
-
-function escapeHtml(text) {
-
-    return text
-        .replaceAll("&", "&amp;")
-        .replaceAll("<", "&lt;")
-        .replaceAll(">", "&gt;")
-        .replaceAll('"', "&quot;")
-        .replaceAll("'", "&#039;");
-
-}
-
-
-function escapeAttribute(text) {
-
-    return text
-        .replaceAll("\\", "\\\\")
-        .replaceAll("'", "\\'");
-
-}
-
 
 async function copyLink(url, button) {
-
     try {
-
         await navigator.clipboard.writeText(url);
 
         const oldText = button.textContent;
-
         button.textContent = "✓ Copiat!";
 
         setTimeout(() => {
-
             button.textContent = oldText;
-
         }, 1200);
-
     } catch {
-
-        prompt(
-            "Copiază linkul:",
-            url
-        );
-
+        window.prompt("Copiază linkul:", url);
     }
-
 }
 
+search.addEventListener("input", renderFiles);
+typeFilter.addEventListener("change", renderFiles);
+folderFilter.addEventListener("change", renderFiles);
+refreshButton.addEventListener("click", loadFiles);
 
-document
-    .getElementById("search")
-    .addEventListener("input", function() {
-
-        const text =
-            this.value.toLowerCase();
-
-        const filtered =
-            allImages.filter(image =>
-
-                image.name
-                    .toLowerCase()
-                    .includes(text)
-
-                ||
-
-                image.path
-                    .toLowerCase()
-                    .includes(text)
-
-            );
-
-        renderImages(filtered);
-
-    });
-
-
-loadImages();
-
+// Încărcare inițială.
+loadFiles();
 </script>
 
 </body>
